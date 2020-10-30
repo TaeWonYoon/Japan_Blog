@@ -7,6 +7,5 @@
         <a href="#" class="under_none" style="margin-right:20px; font-size: 18px;font-weight: bold;">개인정보처리방침 </a> <span>|</span> 
         <a href="#" class="under_none" style="margin-right:20px; font-size: 18px;"> 글 권리 보호</a> <br><br><br><br>
         <span style="color:red; font-weight:800px;font-size:25px;margin-left:245px;">Blog company</span>
-        
     </div>
 </footer>
