@@ -15,7 +15,7 @@
 </style>
 <body>
     <div id="body">
-        <%@ include file="/header.jsp" %>
+        <%@ include file="/layout/header.jsp" %>
         <article id="section">
             <div id="aside">
                 <div id="category">
@@ -118,7 +118,7 @@
             </div>
         </article>
 
-        <%@ include file="/footer.jsp" %>
+        <%@ include file="/layout/footer.jsp" %>
     </div>
     <script>
     <%--
