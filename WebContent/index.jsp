@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png">
 <title>BLOG</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="/css/class.css">
 </head>
@@ -25,36 +25,41 @@
                         </div>
                         <div id="profile_two">
                             <ul class="list_style">
-                                <li><a href="#" class="black under_none">별명</a></li>
-                                <li><a href="#" class="black under_none">등급</a></li>
-                                <li><a href="#" class="black under_none">프로필</a></li>
+                                <li><span class="black under_none">별명</span>
+                                <li><span class="black under_none">등급</span>
+                                <li><span class="black under_none">프로필</span>
+                                <li></li>
                             </ul>
                         </div>
                     </div>
+                    
                     <div id="profile2">
-                        <span>게시글</span>
-                        <ul class="list_style">
-                            <li class=""><a href="#" class="blue under_none">공지</a></li>
+                        <span style="font-size:30px;" class="black">게시글</span>
+                        <ul class="list_style" style="margin-top:8px;">
+                            <li class=""style="margin-bottom:5px;"><a href="#" class="black under_none bold" >공지사항</a></li> 
                             
-                            <li class=""><a href="#" class="blue under_none" id="sports">스포츠</a></li>
-                            <span class="nav_toggle">   
-                                <ul class="list_style nav_list">
-                                    <li>→농구</li>
-                                    <li>→축구</li>
-                                    <li>→야쿠</li>
-                                </ul>
+                            <span>
+                            	<li class="" style="margin-bottom:5px;"><a href="#" class="black under_none bold" id="sports">스포츠</a></li>
+	                             <span class="nav_toggle">  
+	                                <ul class="list_style nav_list nav_toggle">
+	                                    <li><a href="#">→ 농구</a></li>
+	                                    <li><a href="#">→ 축구</a></li>
+	                                    <li><a href="#">→ 야쿠</a></li>
+	                                </ul>
+	                             </span>
                             </span>
-                            
-                            <li class=""><a href="#" id="taste" class="blue under_none">맛집탐방</a></li>
-                            <span class="nav_toggle">   
-                                <ul class="list_style nav_list2">
-                                    <li>→서울</li>
-                                    <li>→부산</li>
-                                    <li>→경기도</li>
-                                    <li>→전라도</li>
-                                    <li>→강원도</li>
-                                    <li>→충청도</li>
-                                </ul>
+                            <span>
+	                            <li class="" style="margin-bottom:5px;"><a href="#" id="taste" class="black under_none bold">맛집탐방</a></li>
+	                            <span class="nav_toggle">   
+	                                <ul class="list_style nav_list2">
+	                                    <li><a href="#">→ 서울</a></li>
+	                                    <li><a href="#">→ 부산</a></li>
+	                                    <li><a href="#">→ 경기도</a></li>
+	                                    <li><a href="#">→ 전라도</a></li>
+	                                    <li><a href="#">→ 강원도</a></li>
+	                                    <li><a href="#">→ 충청도</a></li>
+	                                </ul>
+	                            </span>
                             </span>
                         </ul>
                     </div>
@@ -62,53 +67,45 @@
             </div>
 
             <div id="article">
-                <div style="margin-top: 30px;"></div>
+                <div style="margin-top: 50px;"></div>
                 <div id="content">
                     <div id="board_p">
                         <h3 style="text-align: center; margin-bottom: 10px;">인기 게시글</h3>
-                        <div>
+                        <div class="board_h" style="border: 1px solid black;">
                             <table border="1" style="text-align: center;">
                                 <colgroup>
                                     <col width="300px" height="100px;">
                                     <col width="100px">
                                     <col width="200px">
                                 </colgroup>
-                                <tr>
-                                    <th>제목</th><th>작성자</th><th>날짜</th><th>조회수</th>
-                                </tr>
-                                <tr>
-                                    <td>애국가</td><td>기수연</td><td>2020-10-27</td><td>8</td>
-                                </tr>
-                                <tr>
-                                    <td>애국가2</td><td>기수연2</td><td>2020-10-27</td><td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>애국가3</td><td>기수연3</td><td>2020-10-27</td><td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>애국가2</td><td>기수연2</td><td>2020-10-27</td><td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>애국가3</td><td>기수연3</td><td>2020-10-27</td><td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>애국가2</td><td>기수연2</td><td>2020-10-27</td><td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>애국가3</td><td>기수연3</td><td>2020-10-27</td><td>10</td>
-                                </tr>
-                                <tr>
-                                    <td>애국가2</td><td>기수연2</td><td>2020-10-27</td><td>5</td>
-                                </tr>
-                                <tr>
-                                    <td>애국가3</td><td>기수연3</td><td>2020-10-27</td><td>10</td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <th>제목</th><th>작성자</th><th>날짜</th><th>조회수</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="for_table">
+                                </tbody>
                             </table>
                             <span>+더보기</span>
                         </div>
-                    </div>
-                    <div id="board_n">
-                        asdasd
+                        <div class="board_h" style="border: 1px solid black;">
+                            <h3 style="text-align: center; margin-bottom: 10px;">최신 게시글</h3>
+                            <table border="1" style="text-align: center;">
+                                <colgroup>
+                                    <col width="300px" height="100px;">
+                                    <col width="100px">
+                                    <col width="200px">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>제목</th><th>작성자</th><th>날짜</th><th>조회수</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="for_table">
+                                </tbody>
+                            </table>
+                            <span>+더보기</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -121,16 +118,29 @@
         <%@ include file="/layout/footer.jsp" %>
     </div>
     <script>
-    <%--
-        $("#header").load("header.html");
-        $("#footer").load("footer.html");
-	--%>
+
+    var tbody = "";
+    
+    for(var i=0; i < 5; i++) {
+        tbody = "<tr>";
+        tbody += "<td>축구동아리${i}</td>";
+        tbody += "<td>김기명${i}</td>";
+        tbody += "<td>2020-10-30</td>";
+        tbody += "<td>99</td>";
+        tbody += "</tr>";
+        
+        $('.for_table').append(tbody);
+    }
+
+    $(document).ready(function() {
+
         $('#sports').click(function() {
             $('.nav_list').toggle();
         })
         $('#taste').click(function() {
             $('.nav_list2').toggle();
-        });
+        })
+    });
         
     </script>
 </body>

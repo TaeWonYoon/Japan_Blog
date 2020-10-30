@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
   
 <header>
-    <span class="header_nav">로그인¸</span> <span class="header_nav"> | </span>
+    <span class="header_nav">로그인</span> <span class="header_nav"> | </span>
     <span class="header_nav">회원가입</span> <span style="display: none;"> | </span> <span style="display: none;">관리자</span>
 </header>
 <br>
