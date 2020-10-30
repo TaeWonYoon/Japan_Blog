@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+header {
+    margin-top:8px;
+    float: right;
+}
+.header_nav {
+    color: #a6a6a6;
+}
+.header_nav:hover {
+    color: #808080;
+}
+#logo {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: red;
+}
+#logo h1 a {
+    text-decoration: none;
+    color: #ff6666;
+}
+#logo h1 a:hover {
+    color: #ff1a1a;
+}
+#section {
+    width: 1920px;
+    height: 800px;
+}
+#aside {
+    float: left;
+    background:red;
+    width: 300px;
+    height: 800px;
+}
+
+
+#aside div {
+    width:250px;
+    margin: 0 auto;
+    margin-top: 30px;
+    background: white;
+    height: 740px;
+}
+#article{
+    float: left;
+    background:yellow;
+    width: 1320px;
+    height: 800px;
+}
+#board_p {
+    height: 400px;
+}
+#board_n {
+    height: 400px;
+}
+#profile {
+    position: relative;
+    border: 1px solid black;
+    width: 190px !important;
+    height:350px !important;
+}
+#profile_one {
+    width:150px !important;
+    height:150px !important;
+}
+#profile_two {
+    position: absolute;
+    top: 150px;
+    left: 40px;
+    width:120px !important; 
+    height:150px !important;
+    margin: 0 auto;
+}
+.nav_list {
+    display: none;
+    margin-left: 15px;
+}
+.nav_list2 {
+    display: none;
+    margin-left: 15px;
+}
+#profile2 {
+    width: 190px !important;
+    height:350px !important;
+}
+#aside-right {
+    float:right;
+    background:blue;
+    width:300px;
+    height:800px;
+}
+#content {
+    margin-top: 20px;
+    width: 1240px;
+    height: 740px;
+    background: white;
+    margin: 0 auto;
+}
+#footer {
+    background: aqua;
+    width: 1920px;
+    height: 200px;
+}
+
+#footer-content {
+    padding-top: 20px;
+    width: 1600px;
+    margin: 0 auto;
+
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    
+}
+#board_p table td {
+    height: 20px;
+}
+#board_p table tr:nth-last-child(2n+1) {
+    background: #ffb3b3;
+  } 
+#board_p {
+    position: relative;
+}
+#board_p span {
+    position: absolute;
+    margin-top:5px;
+    right: 290px;
+}
