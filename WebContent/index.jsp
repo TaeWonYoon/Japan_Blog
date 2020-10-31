@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png">
 <title>BLOG</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="/css/class.css">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <style>
     
@@ -101,7 +101,8 @@
                                         <th>제목</th><th>작성자</th><th>날짜</th><th>조회수</th>
                                     </tr>
                                 </thead>
-                                <tbody class="for_table">
+                                <tb
+                                ody class="for_table">
                                 </tbody>
                             </table>
                             <span>+더보기</span>
@@ -117,11 +118,11 @@
 
         <%@ include file="/layout/footer.jsp" %>
     </div>
+    <script src="/js/jquery.min.js"></script>
     <script>
 
-    var tbody = "";
-    
     for(var i=0; i < 5; i++) {
+    	var tbody = "";
         tbody = "<tr>";
         tbody += "<td>축구동아리${i}</td>";
         tbody += "<td>김기명${i}</td>";
