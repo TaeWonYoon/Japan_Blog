@@ -119,6 +119,7 @@
         <%@ include file="/layout/footer.jsp" %>
     </div>
     
+    
     <script src="/js/jquery.min.js"></script>
     <script>
 
