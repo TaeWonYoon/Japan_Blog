@@ -49,11 +49,13 @@ if (id != null && login) {
 			    		<form class="" id="registerForm" method="post" action="<c:url value='/' />register">
 			    			<div class="form-group">
 	    							<label>아이디(필수)</label>
-	    							<div class="form-inline">
-	    							<input type="text" class="form-control" name="id" placeholder="아이디" required maxlength="50" onkeydown="inputIdChk()">
-	    							<input type="button" class="btn btn-primary mr-sm-2" value="중복확인" onclick="openIdChk()">
-	    							<input type="hidden" name="idDuplication" value="idUncheck">
-    								</div>
+	    							<div class =row>
+			    						<div class="form-inline">
+				    						<input type="text" class="form-control mr-sm-2" name="id" placeholder="아이디" required maxlength="50" onkeydown="inputIdChk()">
+				    						<input type="button" class="btn btn-primary mr-sm-2" value="중복확인" onclick="openIdChk()">
+				    						<input type="hidden" name="idDuplication" value="idUncheck">
+		    							</div>
+	    							</div>	
   							</div>
 			    			<div class="form-group">
     							<label>비밀번호(필수)</label>
