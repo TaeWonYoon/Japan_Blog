@@ -16,3 +16,7 @@
 .list_style {
     list-style: none;
 }
+.bold {
+	font-weight: 900px;
+	font-size: 18px;
+}

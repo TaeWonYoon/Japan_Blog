@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     margin: 0;
     padding: 0;
-
+	font-family: 'Roboto', sans-serif;
 }
 
 header {
@@ -29,13 +31,13 @@ header {
 }
 #section {
     width: 1920px;
-    height: 800px;
+    height: 1200px;
 }
 #aside {
     float: left;
     background:red;
     width: 300px;
-    height: 800px;
+    height: 900px;
 }
 
 
@@ -50,7 +52,7 @@ header {
     float: left;
     background:yellow;
     width: 1320px;
-    height: 800px;
+    height: 1200px;
 }
 #board_p {
     height: 400px;
@@ -71,7 +73,7 @@ header {
 #profile_two {
     position: absolute;
     top: 150px;
-    left: 40px;
+    left: 20px;
     width:120px !important; 
     height:150px !important;
     margin: 0 auto;
@@ -97,7 +99,7 @@ header {
 #content {
     margin-top: 20px;
     width: 1240px;
-    height: 740px;
+    height: 1100px;
     background: white;
     margin: 0 auto;
 }
@@ -108,8 +110,8 @@ header {
 }
 
 #footer-content {
-    padding-top: 20px;
-    width: 1600px;
+    padding-top: 50px;
+    width: 650px;
     margin: 0 auto;
 
 }
@@ -121,9 +123,9 @@ table {
     
 }
 #board_p table td {
-    height: 20px;
+    height: 30px;
 }
-#board_p table tr:nth-last-child(2n+1) {
+#board_p table tr:nth-last-child(2n+2) {
     background: #ffb3b3;
   } 
 #board_p {
@@ -133,4 +135,15 @@ table {
     position: absolute;
     margin-top:5px;
     right: 290px;
+}
+.board_h {
+    height:500px;
+}
+.nav_toggle a {
+	text-decoration: none;
+	color: #6666ff;
+	font-size: 17px;
+}
+.nav_toggle a:hover {
+	color: #1a1aff;
 }
