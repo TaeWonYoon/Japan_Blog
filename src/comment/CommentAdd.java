@@ -47,7 +47,7 @@ public class CommentAdd extends HttpServlet {
 		//String userId = (String) session.getAttribute("id");
 		String userId = "test";
 		String boardId = request.getParameter("board_id");
-		String content = request.getParameter("content");
+		String content = request.getParameter("comment_content");
 		
 		Date time = new Date();
 		SimpleDateFormat format = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
@@ -97,7 +97,7 @@ public class CommentAdd extends HttpServlet {
 			}
 		}
 		
-		response.sendRedirect("../board/view.jsp");
+		response.sendRedirect("../board/view.jsp?board_id=" + boardId);
 	}
 
 }

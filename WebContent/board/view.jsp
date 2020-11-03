@@ -106,15 +106,16 @@ try {
 			</div>
 			<div class="card-footer">
 			  <form name="commentAddForm" method="post" action="<c:url value='/' />comment/add">
+			  <input type="hidden" name="board_id" value="<%=boardId%>">
 				<div class="input-group mb-3">
 				  <input type="text" class="form-control" placeholder="댓글을 입력하세요." name="comment_content">
 				  <div class="input-group-append">
 				    <button class="btn btn-outline-primary" type="button" id="btnCommentAdd">등록</button>
+				  </div>
 				</div>
+		  	  </form>
 			</div>
-		  </form>
 		</div>
-	</div>
 
 </div>
 
