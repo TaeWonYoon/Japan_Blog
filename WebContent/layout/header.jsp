@@ -43,7 +43,6 @@
 <% 		
 	}
 %>
-    
 	<br>
 	<div id="logo" style="margin-top:20px;">
     		<h1><a href="/">BLOG</a></h1>
