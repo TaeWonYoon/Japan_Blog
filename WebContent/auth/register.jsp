@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%
+<%--
 // 세션 정보
 String id = (String)session.getAttribute("id");
 Boolean login = (Boolean)session.getAttribute("login");
@@ -10,7 +10,7 @@ Boolean login = (Boolean)session.getAttribute("login");
 if (id != null && login) {
 	response.sendRedirect("/main/main.jsp");
 }
-%>
+--%>
 
 <!doctype html>
 <html lang="en">
@@ -48,7 +48,7 @@ if (id != null && login) {
 			  		<div class="card-body">
 			    		<form class="" id="registerForm" method="post" action="<c:url value='/' />register">
 			    			<div class="form-group">
-	    							<label>아이디(필수)</label>
+	    							<label>아이디입력(필수)</label>
 	    							<div class =row>
 			    						<div class="form-inline">
 				    						<input type="text" class="form-control mr-sm-2" name="id" placeholder="아이디" required maxlength="50" onkeydown="inputIdChk()">
