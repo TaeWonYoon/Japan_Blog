@@ -27,8 +27,9 @@
 	if(id != null) {
 %>
 	<header>
-	     <span class="header_nav"><%=id%>님 환영합니다.</span><span class="header_nav"> | </span>
-	     <span class="header_nav">로그아웃</span> <span class="header_nav"> | </span>
+	     <span class="header_nav"><b><%=id%></b>님 환영합니다.</span>&nbsp;&nbsp;
+	     <span class=""><a href="/logout" class="header_nav under_none">로그아웃</a></span>
+	     <span class="header_nav" style="display: none;"> | </span>
 	     <span style="display: none;">관리자</span>
 	</header>
 <% 		
@@ -36,7 +37,7 @@
 	else {
 %>
 	<header>
-	    <span class="header_nav"><a href="/auth/login_t.jsp">로그인</a></span> <span class="header_nav"> | </span>
+	    <span class="header_nav"><a href="/auth/login_t.jsp" class="under_none header_nav">로그인</a></span> <span class="header_nav"> | </span>
 	    <span class="header_nav">회원가입</span>
 	</header>
 <% 		
