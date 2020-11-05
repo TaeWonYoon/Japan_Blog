@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password" class="text-info">Password:</label><br>
-                            <input type="text" name="pw" id="password" class="form-control">
+                            <input type="password" name="pw" id="password" class="form-control">
                         </div>
                         <div class="form-group">
                             <br>
