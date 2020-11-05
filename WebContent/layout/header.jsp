@@ -2,11 +2,8 @@
     pageEncoding="UTF-8"%>
 <% 
 // 세션 정보
-	String id = null;
-	id = (String)session.getAttribute("id");
-	Boolean login = false;
-	login = (Boolean)session.getAttribute("login");
-	
+	String id = (String)session.getAttribute("id");
+	Boolean login = (Boolean)session.getAttribute("login");
 %>
 <%-- 
 	if( id == null || !login ) {
@@ -23,6 +20,7 @@
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="/css/class.css">
 </head>
+<body>
 <%
 	if(id != null) {
 %>
@@ -37,8 +35,8 @@
 	else {
 %>
 	<header>
-	    <span class="header_nav"><a href="/auth/login_t.jsp" class="under_none header_nav">로그인</a></span> <span class="header_nav"> | </span>
-	    <span class="header_nav">회원가입</span>
+	    <span class="header_nav"><a href="/auth/login.jsp" class="under_none header_nav">로그인</a></span> <span class="header_nav"> | </span>
+	    <span class="header_nav"><a href="/auth/register.jsp" class="header_nav under_none">회원가입</a></span>
 	</header>
 <% 		
 	}
@@ -47,3 +45,5 @@
 	<div id="logo" style="margin-top:20px;">
     		<h1><a href="/">BLOG</a></h1>
 	</div>
+</body>
+</html>

@@ -49,8 +49,8 @@ if (id != null && login) {
 			    		<form class="" id="registerForm" method="post" action="<c:url value='/' />register">
 			    			<div class="form-group">
 	    							<label>아이디입력(필수)</label>
-	    							<div class =row>
-			    						<div class="form-inline">
+	    							<div class ="row">
+			    						<div class="form-inline" style="margin-left:15px;">
 				    						<input type="text" class="form-control mr-sm-2" name="id" placeholder="아이디" required maxlength="50" onkeydown="inputIdChk()">
 				    						<input type="button" class="btn btn-primary mr-sm-2" value="중복확인" onclick="openIdChk()">
 				    						<input type="hidden" name="idDuplication" value="idUncheck">

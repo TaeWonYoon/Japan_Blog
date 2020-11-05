@@ -31,6 +31,12 @@ public class login extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	// TODO Auto-generated method stub
+    	super.doGet(req, resp);
+    }
+    
 	// 로그인 처리
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -38,28 +44,31 @@ public class login extends HttpServlet {
         
 		String id = request.getParameter("id");
 		String password = request.getParameter("pw");
-		System.out.println(id + password);
+		
+		System.out.println(id + " 비번은 : " + password);
 		
 		Boolean idCorrect = false;
 		Boolean passwordCorrect = false;
 		
 		Connection conn = null;
-		Statement state = null;
 		PreparedStatement pstmt = null;
 		
 		try {
-			Class.forName(JDBC_DRIVER);
+			
+			Class.forName(JDBC_DRIVER); // 디비 드라이버
 			conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 			System.out.println("연결");
-			state = conn.createStatement();
 			
-			String sql;
-			sql = "SELECT * FROM Test WHERE ID=? LIMIT 1";
+			String sql = null;
+			sql = "SELECT * FROM Test WHERE ID = ?";
+			
 			pstmt = conn.prepareStatement(sql);
+			
 			pstmt.setNString(1, id);
 			ResultSet rs = pstmt.executeQuery();
 			
 			// 아이디 맞음
+			//System.out.println(rs);
 			if (rs != null) {
 				idCorrect = true;
 				
@@ -70,7 +79,6 @@ public class login extends HttpServlet {
 					if (password.equals(passwordInDB)) {
 						passwordCorrect = true;
 					}
-					
 					// 비밀번호 틀림
 					else {
 						System.out.println("비밀번호 틀림");
@@ -82,22 +90,15 @@ public class login extends HttpServlet {
 			else {
 				System.out.println("아이디 틀림");
 			}
-			
 			rs.close();
-			state.close();
-			conn.close();
+			
 		} catch(Exception e) {
 			System.out.println("e: " + e.toString());
 		} finally {
 			try {
-				if (state != null) {
-					state.close();
+				if(pstmt != null) {
+				pstmt.close();
 				}
-			} catch(SQLException e) {
-				System.out.println("e: " + e.toString());
-			}
-			
-			try {
 				if (conn != null) {
 					conn.close();
 				}
@@ -108,7 +109,7 @@ public class login extends HttpServlet {
 						
 		// 아이디, 비밀번호가 맞음
 		if (idCorrect && passwordCorrect) {
-			HttpSession session = request.getSession(true);
+			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 			session.setAttribute("login", true);
 			response.sendRedirect("/index.jsp");
