@@ -20,6 +20,7 @@
 	</style>
 </head>
 <body>
+<%@ include file="/layout/header.jsp" %>
 <div class="container">
 	<div class="add-box">
 	
@@ -48,6 +49,7 @@
 </div>
 
 <%@ include file="/layout/script.jsp" %>
+<%@ include file="/layout/footer.jsp" %>
 
 <script>
 	$('#btnAdd').on('click', function() {

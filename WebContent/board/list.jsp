@@ -28,15 +28,20 @@ PreparedStatement pstmt = null;
 	<link rel="stylesheet"
 		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-		crossorigin="anonymous">	
+		crossorigin="anonymous">
+		
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/class.css">	
 	
 	<style>
-		body {
+		.container {
 			margin-top: 70px;
 		}
 	</style>
 </head>
 <body>
+<%@ include file="/layout/header.jsp" %>
+
 <div class="container">
 
 	<div class="list-box">
@@ -118,5 +123,7 @@ try {
 </div>	
 
 <%@ include file="/layout/script.jsp" %>
+<%@ include file="/layout/footer.jsp" %>
+
 </body>
 </html>

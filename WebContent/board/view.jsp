@@ -77,7 +77,7 @@ try {
 		
 </head>
 <body>
-
+<%@ include file="/layout/header.jsp" %>
 <div class="container">
 
 	<div class="view-box">
@@ -101,21 +101,21 @@ try {
 		<div class="card" style="margin-top:20px;">
 			<div class="card-body">
 				<div>
-					<form>
-						<input type="text" class="form-control">
-						<button type="button" class="btn btn-primary">등록</button>
-					</form>
+					
 				</div>
 			</div>
 			<div class="card-footer">
-				
-				<div class="float-right">
-					<button type="button" class="btn btn-warning">수정</button>
-					<button type="button" class="btn btn-danger">삭제</button>
+			  <form name="commentAddForm" method="post" action="<c:url value='/' />comment/add">
+			  <input type="hidden" name="board_id" value="<%=boardId%>">
+				<div class="input-group mb-3">
+				  <input type="text" class="form-control" placeholder="댓글을 입력하세요." name="comment_content">
+				  <div class="input-group-append">
+				    <button class="btn btn-outline-primary" type="button" id="btnCommentAdd">등록</button>
+				  </div>
 				</div>
+		  	  </form>
 			</div>
 		</div>
-	</div>
 
 </div>
 
@@ -146,10 +146,21 @@ try {
 </form>
 
 <%@ include file="/layout/script.jsp" %>
+<%@ include file="/layout/footer.jsp" %>
 		
 <script>
 	$('#btnDelete').on('click', function() {
 		$('#deleteForm').submit();
+	});
+	
+	$('#btnCommentAdd').on('click', function() {
+		if (!$('input[name="comment_content"]').val()) {
+			alert('댓글 내용을 입력해주세요');
+			$('input[name="comment_content"]').focus();
+			return false;
+		}
+		
+		$('form[name=commentAddForm]').submit();
 	});
 </script>
 </body>
