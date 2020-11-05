@@ -14,7 +14,6 @@ String DB_USER = "dbsxodnjs456";
 String DB_PASSWORD = "dljeQPcyr0WZUKUS";
 
 Connection conn = null;
-Statement state = null;
 PreparedStatement pstmt = null;
 %>
 
@@ -64,7 +63,6 @@ PreparedStatement pstmt = null;
 try {
 	Class.forName(JDBC_DRIVER);
 	conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-	state = conn.createStatement();
 	ResultSet rs = null;
 	
 	String sql = "SELECT A.ID, A.TITLE, A.USER_ID, A.DATE_TIME, B.NICKNAME "; 
@@ -105,12 +103,12 @@ try {
 	}
 	
 	rs.close();
-	state.close();
+	pstmt.close();
 	conn.close();
 } catch(Exception e) {
 	System.out.println("e: " + e.toString());
 } finally {
-	state.close();
+	pstmt.close();
 	conn.close();
 }
 %>						

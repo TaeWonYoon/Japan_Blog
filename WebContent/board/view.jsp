@@ -18,20 +18,25 @@ String dateTime = "";
 String name = "";
 String content = "";
 
+String commnetId = "";
+String commentContent = "";
+String commentUserId = "";
+String commentDateTime = "";
+String commentNickname = "";
+
 Connection conn = null;
-Statement state = null;
 PreparedStatement pstmt = null;
 
 try {
 	Class.forName(JDBC_DRIVER);
 	conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-	state = conn.createStatement();
 	ResultSet rs = null;
 	
-	String sql = "SELECT A.ID, A.TITLE, A.USER_ID, A.DATE_TIME, A.CONTENT, B.NICKNAME "; 
-	sql += "FROM JP_BOARD AS A ";
-	sql += "LEFT JOIN JP_USER AS B ON A.USER_ID = B.ID ";
-	sql += "WHERE A.ID=? LIMIT 1;";
+	// 닉네임을 가지고 오기 위한 JP_BOARD, JP_USER 조인
+	String sql = "SELECT B.ID, B.TITLE, B.USER_ID, B.DATE_TIME, B.CONTENT, U.NICKNAME "; 
+	sql += "FROM JP_BOARD AS B ";
+	sql += "LEFT JOIN JP_USER AS U ON B.USER_ID = U.ID ";
+	sql += "WHERE B.ID=? LIMIT 1;";
 	pstmt = conn.prepareStatement(sql);
 	pstmt.setNString(1, boardId);
 	rs = pstmt.executeQuery();
@@ -39,21 +44,20 @@ try {
 	// JP_BOARD 정보 있음
 	if (rs != null) {	
 		while(rs.next()) {		
-			title = rs.getNString("A.TITLE");
-			userId = rs.getNString("A.USER_ID");
-			dateTime = rs.getNString("A.DATE_TIME");
-			name = rs.getNString("B.NICKNAME");
-			content = rs.getNString("A.CONTENT");
+			title = rs.getNString("B.TITLE");
+			userId = rs.getNString("B.USER_ID");
+			dateTime = rs.getNString("B.DATE_TIME");
+			name = rs.getNString("U.NICKNAME");
+			content = rs.getNString("B.CONTENT");
 		}
 	}
-	
 	rs.close();
-	state.close();
+	pstmt.close();
 	conn.close();
 } catch(Exception e) {
 	System.out.println("e: " + e.toString());
 } finally {
-	state.close();
+	pstmt.close();
 	conn.close();
 }
 %>
@@ -68,6 +72,9 @@ try {
 		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 		crossorigin="anonymous">	
+		
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/class.css">
 	
 	<style>
 		body {
@@ -81,7 +88,7 @@ try {
 <div class="container">
 
 	<div class="view-box">
-		<!-- 글내용 -->
+		<!-- 글 내용 -->
 		<div class="card">
 			<div class="card-header"><%=title %></div>
 			<div class="card-body">
@@ -101,7 +108,74 @@ try {
 		<div class="card" style="margin-top:20px;">
 			<div class="card-body">
 				<div>
-					
+					<table class="table" style="margin-bottom:0;">
+						<thead>
+							<tr>
+								<th style="width:7%;">번호</th>
+								<th style="width:70%;">내용</th>
+								<th style="width:13%;">작성자</th>
+								<th style="width:10%;">작성일시</th>
+							</tr>
+						</thead>
+						<tbody>
+						<% 
+						try {
+							Class.forName(JDBC_DRIVER);
+							conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+							ResultSet rs = null;
+							
+							// 댓글 정보를 가지고 오기 위한 JP_COMMENT, JP_BOARD, JP_USER 조인
+							String sql = "SELECT C.COMMENT_ID, C.CONTENT, C.BOARD_ID, C.USER_ID, C.DATE_TIME, U.NICKNAME "
+									+ "FROM JP_COMMENT AS C "
+									+ "INNER JOIN JP_BOARD AS B ON C.BOARD_ID = B.ID "
+									+ "INNER JOIN JP_USER AS U ON C.USER_ID = U.ID "
+									+ "WHERE B.ID = ?;";
+							pstmt = conn.prepareStatement(sql);
+							pstmt.setNString(1, boardId);
+							rs = pstmt.executeQuery();
+							
+							// JP_COMMENT 정보 있음
+							if(rs != null) {
+								int i = 1;
+								while(rs.next()) {
+									commnetId = rs.getNString("C.COMMENT_ID");
+									commentContent = rs.getNString("C.CONTENT");
+									commentUserId = rs.getNString("C.USER_ID");
+									commentDateTime = rs.getNString("C.DATE_TIME");
+									commentNickname = rs.getNString("U.NICKNAME");
+							%>
+							<tr>
+								<td><%=i %></td>
+								<td><%=commentContent %></td>
+								<td><%=commentNickname %>(<%=commentUserId %>)</td>
+								<td><%=commentDateTime %></td>
+							</tr>
+						<%
+								i++;
+								}
+							}
+							
+							// JP_COMMENT 정보 없음
+							else {
+						%>
+							<tr>
+								<td colspan="4" class="text-center">등록된 댓글이 없습니다.</td>
+							</tr>
+						<%
+							}
+							rs.close();
+							pstmt.close();
+							conn.close();
+						} catch(Exception e) {
+							System.out.println("e: " + e.toString());
+						} finally {
+							pstmt.close();
+							conn.close();
+						}
+						%>
+							
+						</tbody>
+					</table>			
 				</div>
 			</div>
 			<div class="card-footer">
