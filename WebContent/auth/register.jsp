@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%--
+<%
 // 세션 정보
 String id = (String)session.getAttribute("id");
 Boolean login = (Boolean)session.getAttribute("login");
@@ -10,7 +10,7 @@ Boolean login = (Boolean)session.getAttribute("login");
 if (id != null && login) {
 	response.sendRedirect("/main/main.jsp");
 }
---%>
+%>
 
 <!doctype html>
 <html lang="en">
@@ -39,7 +39,7 @@ if (id != null && login) {
 	<div class="container">
 	
 		<div class="row justify-content-md-center">
-			<div class="col-md-4">
+			<div class="col-md-6">
 			
 				<div class="card login-box">
 					<div class="card-header">
@@ -47,16 +47,17 @@ if (id != null && login) {
 					</div>
 			  		<div class="card-body">
 			    		<form class="" id="registerForm" method="post" action="<c:url value='/' />register">
-			    			<div class="form-group">
-	    							<label>아이디입력(필수)</label>
-	    							<div class ="row">
-			    						<div class="form-inline" style="margin-left:15px;">
-				    						<input type="text" class="form-control mr-sm-2" name="id" placeholder="아이디" required maxlength="50" onkeydown="inputIdChk()">
-				    						<input type="button" class="btn btn-primary mr-sm-2" value="중복확인" onclick="openIdChk()">
-				    						<input type="hidden" name="idDuplication" value="idUncheck">
+				    		<div class="input-group">
+    							<div class="input-group-prepend">
+    								<div class="form-group">
+		    							<label>아이디(필수)</label>
+			    						<div class="form-inline">
+				    						<input type="text" class="form-control mr-sm-2" name="id" placeholder="아이디" required maxlength="50">
+				    						<input type="button" class="btn btn-outline-primary mr-sm-2" value="중복확인" id="btnCheckValid">
 		    							</div>
-	    							</div>	
-  							</div>
+	   								</div>		
+	  							</div>
+	  						</div>	
 			    			<div class="form-group">
     							<label>비밀번호(필수)</label>
     							<input type="password" class="form-control" name="password" placeholder="비밀번호(최대20글자)" required maxlength="20">
@@ -80,23 +81,9 @@ if (id != null && login) {
   							<div class="form-group">
     							<label>생년월일</label>
     							<div class="form-inline">    							
-	    							<input type="date" class="form-control mr-sm-2" name="date_of_birth" placeholder="년(4자)" size="6">
-	      							<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-								        <option selected>월</option>
-								        <option value="1">1</option>
-								        <option value="2">2</option>
-								        <option value="3">3</option>
-								        <option value="4">4</option>
-								        <option value="5">5</option>
-								        <option value="6">6</option>
-								        <option value="7">7</option>
-								        <option value="8">8</option>
-								        <option value="9">9</option>
-								        <option value="10">10</option>
-								        <option value="11">11</option>
-								        <option value="12">12</option>
-	     						 	</select>
-	     						 	<input type="text" class="form-control mr-sm-2" name="birthdd" maxlength="2" placeholder="일" size="4">
+	    							<input type="text" class="form-control mr-sm-2" name="birthyy" placeholder="년(4자)" size="4" maxlength="4" >
+	    							<input type="text" class="form-control mr-sm-2" name="birthmm" maxlength="2" placeholder="월" size="4">
+	     							<input type="text" class="form-control mr-sm-2" name="birthdd" maxlength="2" placeholder="일" size="4">
     							</div>
   							</div>
 			    		</form>
@@ -116,9 +103,7 @@ if (id != null && login) {
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
 		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
@@ -208,40 +193,37 @@ if (id != null && login) {
 				return false;	
 			}
 			
-			/*
-			// 아이디 검증
-			$.ajax({
-				method: "GET",
-				url: "<c:url value='/' />valid_id",
-				data: { 
-					id: $('#input[name=id]').val(), 
-				}
-			}).done(function(response) {
-				if (response.data) {
-					alert('아이디가 존재합니다');
-				} else {
-					$('#registerForm').submit();
-				}
-			});
-			*/
+			
+			
+			
 			
 			// 아이디, 비밀번호, 이름, 이메일, 전화번호 전송
 			$('#registerForm').submit();
 		});
 		
-		//아이디 중복체크 화면 open
-		function openIdChk(){
+		$('#btnCheckValid').on('click', function() {
+			if ( !$('input[name=id]').val() ) {
+				alert('아이디를 입력해주세요');
+				$('input[name="id"]').focus();
+				return false;	
+			}
 			
-			window.name = "parentForm";
-			window.open("member/IdCheckForm.jsp",
-					"chkForm", "wirth=500, height=300, resizable = no, scrollbars = no");
-		}
-		
-		// 중복체크 후 다시 새로운 아이디를 입력했을 때 다시 중복체크를 하도록 한다.
-		function inputIdChk(){
-			document.userInfo.idDuplication.value = "idUncheck";
-		}
-		
+			// 아이디 검증
+			$.ajax({
+				method: "POST",
+				url: "<c:url value='/' />valid",
+				data: { 
+					id: $('input[name=id]').val(), 
+				}
+			}).done(function(response) {
+				console.log(response.data);
+				if (response.data == 'valid') {
+					alert('아이디가 존재합니다');
+				} else {
+					alert('아이디가 사용가능합니다');
+				}
+			});
+		});		
 	</script>
 </body>
 </html>
