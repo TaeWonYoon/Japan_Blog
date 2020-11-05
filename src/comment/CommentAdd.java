@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
 public class CommentAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	// mariadb 연결정보
+	// mariadb 연결 정보
 	private final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
 	private final String DB_URL = "jdbc:mariadb://jeongps.com:3306/japan_dbsxodnjs456";
 	private final String DB_USER = "dbsxodnjs456";
@@ -45,7 +45,7 @@ public class CommentAdd extends HttpServlet {
 				
 		//HttpSession session = request.getSession(true);
 		//String userId = (String) session.getAttribute("id");
-		String userId = "test";
+		String userId = "test"; ////////////////////////////////////////////////////////////////추후 수정 바람!!
 		String boardId = request.getParameter("board_id");
 		String content = request.getParameter("comment_content");
 		
@@ -54,13 +54,11 @@ public class CommentAdd extends HttpServlet {
 		String dateTime = format.format(time);
 		
 		Connection conn = null;
-		Statement state = null;
 		PreparedStatement pstmt = null;
 		
 		try {
 			Class.forName(JDBC_DRIVER);
 			conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-			state = conn.createStatement();
 			
 			String sql;
 			sql = "INSERT INTO JP_COMMENT (BOARD_ID, USER_ID, CONTENT, DATE_TIME) VALUES (?, ?, ?, ?);";
@@ -78,9 +76,9 @@ public class CommentAdd extends HttpServlet {
 		} catch(Exception e) {
 			System.out.println("e: " + e.toString());
 		} finally {
-			if (state != null) {
+			if (pstmt != null) {
 				try {
-					state.close();
+					pstmt.close();
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
