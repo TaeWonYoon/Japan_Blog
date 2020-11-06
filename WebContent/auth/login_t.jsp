@@ -8,10 +8,9 @@
 </head>
 <body>
 	<form action="/login" method="post">
-		아이디 : <input type="text" name="id" value="taewon" /> <br>
-		비밀번호 : <input type="password" name="pw" value="taewon" /> <br>
+		<input type="text" name="id" value="taewon" />
+		<input type="password" name="pw" value="taewon" />
 		<input type="submit" value="submit" />
 	</form>
-	
 </body>
 </html>
