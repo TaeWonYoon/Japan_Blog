@@ -15,7 +15,6 @@
 <%@ include file="/layout/header.jsp" %>
 
     <div id="body">
-        
         <article id="section">
             <div id="aside">
                 <div id="category">
