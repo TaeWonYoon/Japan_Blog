@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="/css/class.css">
 </head>
+<body>
 <%
 	if(id != null) {
 %>
@@ -36,13 +37,16 @@
 	else {
 %>
 	<header>
-    <span class="header_nav"><a href="/auth/login_t.jsp">로그인</a></span> <span class="header_nav"> | </span>
-    <span class="header_nav">회원가입</span>
+    <span class="header_nav"><a href="/auth/login.jsp" class="under_none header_nav">로그인</a></span> <span class="header_nav"> | </span>
+    <span class="header_nav"><a href="/auth/register.jsp" class="under_none header_nav">회원가입</a></span>
 	</header>
 <% 		
 	}
 %>    
 <br>
 <div id="logo" style="margin-top:20px;">
-    <h1><a href="/">BLOG</a></h1>
+    <h1 id="Blog"><a href="/">BLOG</a></h1>
 </div>
+<hr>
+</body>
+</html>

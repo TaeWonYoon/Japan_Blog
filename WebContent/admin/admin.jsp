@@ -10,6 +10,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 </head>
 <body>
+	<div style="text-align:right;">김민수님환영합니다.</div>
+	<%@ include file="/layout/header.jsp" %>
+	
     <div class="container">
         <div class="list-box">
             <div class="card">
@@ -67,6 +70,9 @@
         </div>
     </div>	
     <script>
+    
+    	$('header').css('display','none');
+    	
         for(var i=0;i<10;i++) {
         var list = "";
             list += "<tr>";
@@ -76,7 +82,6 @@
             list +="<option value='2'>잎사귀</option>";
             list +="<option value'3'>열매</option>";
             list +="<option value='4'>운영자</option>";
-            list +="<option value='5'>관리자</option>";
             list +="</select>";
             list +="</td>";
             list +="<td><input type='text' value='축구' style='border:none;width:45px;'  readonly></td>";

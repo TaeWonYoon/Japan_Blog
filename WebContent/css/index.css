@@ -35,13 +35,14 @@ header {
 }
 #aside {
     float: left;
-    background:red;
     width: 300px;
     height: 900px;
+    border-bottom: 1px solid black;
 }
 
 
 #aside div {
+	background: green;
     width:250px;
     margin: 0 auto;
     margin-top: 30px;
@@ -50,9 +51,10 @@ header {
 }
 #article{
     float: left;
-    background:yellow;
-    width: 1320px;
+    width: 1300px;
     height: 1200px;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
 }
 #board_p {
     height: 400px;
@@ -92,7 +94,6 @@ header {
 }
 #aside-right {
     float:right;
-    background:blue;
     width:300px;
     height:800px;
 }
@@ -141,9 +142,10 @@ table {
 }
 .nav_toggle a {
 	text-decoration: none;
-	color: #6666ff;
+	color: #4d4d4d;
 	font-size: 17px;
 }
 .nav_toggle a:hover {
-	color: #1a1aff;
+	font-weight: 800;
+	color: #262626;
 }
