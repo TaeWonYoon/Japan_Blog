@@ -46,8 +46,6 @@ private static final long serialVersionUID = 1L;
 		String month = request.getParameter("month");
 		String day = request.getParameter("day");
 		
-		System.out.println(id + " / " + password + " / " + name + " / " + email + " / " + nickname + " / " + phone + " / " +year + " / " + month + " / " + day + " / ");
-		
 		// SQL 변수
 		Connection conn = null;
 		Statement state = null;
@@ -97,7 +95,7 @@ private static final long serialVersionUID = 1L;
 				System.out.println("DB Connection Close error: " + e.toString());
 			}
 		}
-		response.sendRedirect("/auth/login.jsp");
+		response.sendRedirect("/index.jsp");
 		
 	}
 

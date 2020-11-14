@@ -136,13 +136,12 @@
 		$('#btnRegister').on('click', function(e) {
 			e.preventDefault();
 			
-			//$('input[name="email"]').val( $.trim($('input[name="email"]').val()) );
-			
 			let id = $.trim( $('input[name="id"]').val() );
 			let password = $.trim( $('input[name="password"]').val() );
 			let name = $.trim( $('input[name="name"]').val() );
 			let email = $.trim( $('input[name="email"]').val() );
 			let phone = $.trim( $('input[name="phone"]').val() );
+			let nickname = $.trim( $('input[name="nickname"]').val() );
 			
 			if ( !id ) {
 				alert('아이디를 입력해주세요');
@@ -156,19 +155,24 @@
 				return false;	
 			}
 			
+			if ( !name ) {
+				alert('이름을 입력해주세요');
+				$('input[name="name"]').focus();
+				return false;	
+			}
+			/*
 			if ( form.idDuplication.value != "idCheck") {
 				alert('아이디 중복확인을 해주세요.');
 				return false;	
-			}
+			}*/
 			
 			if ( !password ) {
 				alert('비밀번호를 입력해주세요');
 				$('input[name="password"]').focus();
 				return false;	
 			}
-			
 			if ( !nickname ) {
-				alert('닉네임을 입력해주세요');
+				alert('비밀번호를 입력해주세요');
 				$('input[name="nickname"]').focus();
 				return false;	
 			}
@@ -192,7 +196,6 @@
 				$('input[name="phone"]').focus();
 				return false;	
 			}
-			*/
 			// 아이디, 비밀번호, 이름, 이메일, 전화번호 전송
 			$('#registerForm').submit();
 		});
@@ -219,7 +222,7 @@
 					alert('사용가능한 아이디입니다');
 				}
 			});
-		});		
+		});	
 	</script>
 </body>
 </html>

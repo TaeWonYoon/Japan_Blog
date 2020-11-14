@@ -45,8 +45,6 @@ public class login extends HttpServlet {
 		String id = request.getParameter("id");
 		String password = request.getParameter("pw");
 		
-		System.out.println(id + " 비번은 : " + password);
-		
 		Boolean idCorrect = false;
 		Boolean passwordCorrect = false;
 		
