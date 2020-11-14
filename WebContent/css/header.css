@@ -1,0 +1,20 @@
+@charset "UTF-8";
+.header_nav {
+    color: #a6a6a6;
+}
+.header_nav:hover {
+    color: #808080;
+}
+#logo {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: red;
+}
+#logo h1 a {
+    text-decoration: none;
+    color: #ff6666;
+}
+#logo h1 a:hover {
+    color: #ff1a1a;
+}

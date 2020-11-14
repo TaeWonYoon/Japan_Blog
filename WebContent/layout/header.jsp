@@ -13,17 +13,7 @@
 		response.sendRedirect("/auth/login.jsp");
 	}
 --%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png">
-<title>BLOG</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="/css/index.css">
-<link rel="stylesheet" href="/css/class.css">
-</head>
-<body>
+
 <%
 	if(id != null) {
 %>
@@ -48,5 +38,3 @@
     <h1 id="Blog"><a href="/">BLOG</a></h1>
 </div>
 <hr>
-</body>
-</html>
