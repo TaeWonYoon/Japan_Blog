@@ -38,7 +38,7 @@
                         <ul class="list_style">
                             <li class=""><a href="#" class="blue under_none">공지</a></li>
                             
-                            <li class=""><a href="#" class="blue under_none" id="sports">스포츠</a></li>
+                            <li class=""><a href="###" class="blue under_none" id="sports">스포츠</a></li>
                             <span class="nav_toggle">   
                                 <ul class="list_style nav_list">
                                     <li><a href="/board/list.jsp">→ 농구</a></li>
@@ -47,7 +47,7 @@
                                 </ul>
                             </span>
                             
-                            <li class=""><a href="#" id="taste" class="blue under_none">맛집탐방</a></li>
+                            <li class=""><a href="###" id="taste" class="blue under_none">맛집탐방</a></li>
                             <span class="nav_toggle">   
                                 <ul class="list_style nav_list2">
                                     <li>→ 서울</li>

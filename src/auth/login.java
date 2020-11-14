@@ -60,7 +60,7 @@ public class login extends HttpServlet {
 			System.out.println("연결");
 			
 			String sql = null;
-			sql = "SELECT * FROM Test WHERE ID = ?";
+			sql = "SELECT * FROM JP_USER WHERE ID = ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			

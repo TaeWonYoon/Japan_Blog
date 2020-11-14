@@ -1,16 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<%
-// 세션 정보
-String id = (String)session.getAttribute("id");
-Boolean login = (Boolean)session.getAttribute("login");
-// 세션이 있는 경우 /main/main.jsp로 페이지 이동
-if (id != null && login) {
-	response.sendRedirect("/main/main.jsp");
-}
-%>
-
 <!doctype html>
 <html lang="en">
 	<head>
@@ -20,10 +9,10 @@ if (id != null && login) {
 		content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-		crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/header.css">
+	<link rel="stylesheet" href="/css/class.css">
+	<link href="/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		
 	<style>
 		.login-box {
@@ -34,7 +23,7 @@ if (id != null && login) {
 	<title>회원가입</title>
 </head>
 <body>
-
+<%@ include file="/layout/header.jsp" %>
 	<div class="container">
 	
 		<div class="row justify-content-md-center">
@@ -75,14 +64,14 @@ if (id != null && login) {
   							</div>
   							<div class="form-group">
     							<label>전화번호(필수)</label>
-    							<input type="text" class="form-control" name="phone" placeholder="010-XXXX-XXXX" required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/, '$1-$2-$3').replace('--', '-') ;">
+    							<input type="text" class="form-control" name="phone" placeholder="010-XXXX-XXXX" maxlength="13" required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/, '$1-$2-$3').replace('--', '-') ;">
   							</div>
   							<div class="form-group">
     							<label>생년월일</label>
-    							<div class="form-inline">    							
-	    							<input type="text" class="form-control mr-sm-2" name="birthyy" placeholder="년(4자)" size="4" maxlength="4" >
-	    							<input type="text" class="form-control mr-sm-2" name="birthmm" maxlength="2" placeholder="월" size="4">
-	     							<input type="text" class="form-control mr-sm-2" name="birthdd" maxlength="2" placeholder="일" size="4">
+    							<div class="form-inline">    					
+	    							<select name="year" id="year" title="년도" class="custom-select"></select>
+									<select name="month" id="month" title="월" class="custom-select"></select>
+									<select name="day" id="day" title="일" class="custom-select"></select>
     							</div>
   							</div>
 			    		</form>
@@ -94,42 +83,54 @@ if (id != null && login) {
 			  			</div>
 			  		</div>
 				</div>
-				
 			</div>
 		</div>		
-		
-	</div>	
-
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-		crossorigin="anonymous"></script>
-		
+	</div>
+	<br><br>
+	<%@ include file="/layout/footer.jsp" %>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	
+	
 	<script>
+		$(document).ready(function () {
+        	setDateBox();
+      	});
+    
+      // select box 연도 , 월 표시
+      function setDateBox() {
+        var dt = new Date();
+        var year = "";
+        var com_year = dt.getFullYear();
+    
+        // 발행 뿌려주기
+        $("#year").append("<option value=''>년도</option>");
+    
+        // 올해 기준으로 -50년부터 +1년을 보여준다.
+        for (var y = (com_year - 90); y <= (com_year-1); y++) {
+          $("#year").append("<option value='" + y + "'>" + y + " 년" + "</option>");
+        }
+    
+        // 월 뿌려주기(1월부터 12월)
+        var month;
+        $("#month").append("<option value=''>월</option>");
+        for (var i = 1; i <= 12; i++) {
+          $("#month").append("<option value='" + i + "'>" + i + " 월" + "</option>");
+        }
+    
+        // 일 뿌려주기(1일부터 31일)
+        var day;
+        $("#day").append("<option value=''>일</option>");
+        for (var i = 1; i <= 31; i++) {
+          $("#day").append("<option value='" + i + "'>" + i + " 일" + "</option>");
+        }
+    
+      }
 		// 이메일 검사
 		function isEmail(value) {
 			let regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
 			return regExp.test(value); // 형식에 맞는 경우 true 리턴	
 		}
-		
-		/*
-		// 전화번호 입력할때 자동으로 하이픈(-) 추가
-	    $('input[name="phone"]').on("keyup", function() {
-	        $(this).val( 
-	        	$(this).val()
-	        	.replace(/[^0-9]/g, "")
-	        	.replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3")
-	        	.replace("--", "-") 
-	        );
-	    });
-		*/
 		
 		// 회원가입 버튼을 누른 경우
 		$('#btnRegister').on('click', function(e) {
@@ -191,6 +192,7 @@ if (id != null && login) {
 				$('input[name="phone"]').focus();
 				return false;	
 			}
+			*/
 			// 아이디, 비밀번호, 이름, 이메일, 전화번호 전송
 			$('#registerForm').submit();
 		});
