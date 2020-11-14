@@ -85,5 +85,4 @@ public class CommentAdd extends HttpServlet {
 		
 		response.sendRedirect("../board/view.jsp?board_id=" + boardId);
 	}
-
 }

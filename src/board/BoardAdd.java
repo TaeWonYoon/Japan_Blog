@@ -85,5 +85,4 @@ public class BoardAdd extends HttpServlet {
 		
 		response.sendRedirect("../board/list.jsp");
 	}
-
 }
