@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/board/edit")
-public class BoardEdit extends HttpServlet {
+@WebServlet("/board/delete")
+public class BoardDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	// mariadb 연결정보
@@ -23,7 +23,7 @@ public class BoardEdit extends HttpServlet {
 	private final String DB_USER = "dbsxodnjs456";
 	private final String DB_PASSWORD = "dljeQPcyr0WZUKUS";
        
-    public BoardEdit() {
+    public BoardDelete() {
         super();
     }
 
@@ -31,8 +31,6 @@ public class BoardEdit extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		String boardId = request.getParameter("board_id");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
 		
 		Connection conn = null;
 		Statement state = null;
@@ -44,13 +42,11 @@ public class BoardEdit extends HttpServlet {
 			state = conn.createStatement();
 			
 			String sql;
-			sql = "UPDATE JP_BOARD SET TITLE=?, CONTENT=? WHERE ID=? LIMIT 1;";
+			sql = "DELETE FROM JP_BOARD WHERE ID=? LIMIT 1;";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, title);
-				pstmt.setString(2, content);
-				pstmt.setString(3, boardId);
+				pstmt.setString(1, boardId);
 				pstmt.executeUpdate();
 			} catch(Exception e) {
 				System.out.println("e: " + e.toString());
@@ -75,7 +71,7 @@ public class BoardEdit extends HttpServlet {
 			}
 		}
 		
-		response.sendRedirect("../board/view.jsp?board_id=" + boardId);
+		response.sendRedirect("../board/list.jsp");
 	}
 
 }
