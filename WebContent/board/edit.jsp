@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true"%>
 <%@ page import="java.sql.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
 // 세션 정보
@@ -86,7 +87,7 @@ try {
 				<form name="editForm" method="post" action="<c:url value='/' />board/edit">
 					<input type="hidden" name="board_id" value="<%=boardId%>">
 	    			<div class="form-group">
-  							<label>이름</label>
+  							<label>닉네임</label>
   							<input type="text" class="form-control" value="<%=name%>" disabled>
 					</div>
 	    			<div class="form-group">
@@ -130,7 +131,7 @@ try {
 			return false;
 		}
 		
-		$('form[name=editForm]').submit();
+		$('form[name="editForm"]').submit();
 	});
 </script>
 

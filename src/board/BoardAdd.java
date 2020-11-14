@@ -16,9 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class BoardAdd
- */
 @WebServlet("/board/add")
 public class BoardAdd extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,17 +26,10 @@ public class BoardAdd extends HttpServlet {
 	private final String DB_USER = "dbsxodnjs456";
 	private final String DB_PASSWORD = "dljeQPcyr0WZUKUS";
 	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public BoardAdd() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 				
@@ -80,7 +70,6 @@ public class BoardAdd extends HttpServlet {
 				try {
 					pstmt.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -89,7 +78,6 @@ public class BoardAdd extends HttpServlet {
 				try {
 					conn.close();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
