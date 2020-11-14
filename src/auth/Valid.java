@@ -76,17 +76,6 @@ public class Valid extends HttpServlet {
 				System.out.println("아이디 없음");
 				data.put("data", "invalid");
 			}
-//			// 아이디 존재
-//			if (rs != null) {
-//				idCorrect = true;	
-//				System.out.println("아이디 존재");
-//			} 
-//			
-//			// 아이디 없음
-//			else {
-//				System.out.println("아아이디 없음");
-//			}
-			
 			rs.close();
 			conn.close();
 		} catch(Exception e) {
