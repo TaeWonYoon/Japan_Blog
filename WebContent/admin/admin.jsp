@@ -35,15 +35,14 @@
                         <thead class="table-primary">
                             <tr>
                                 <th>등급</th>
-                                <th>아이디</th>
+                                <th>아아디</th>
                                 <th>이름</th>
-                                <th>이메일</th>
-                                <th style="width:15px;">패스워드</th>
+                                <th style="width:15px;">이메일</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <!-- <td>
+                                <td>
                                     <select name="level" id="" style="width:80px;">
                                         <option value="1" size="4">새싹</option>
                                         <option value="2">잎사귀</option>
@@ -52,11 +51,9 @@
                                         <option value="5">관리자</option>
                                     </select>
                                 </td>
-                                <td><input type="text" name="" id="" value="농구" style="border:none;"  readonly></td>
                                 <td><input type="text" name="" id="" value="dbsxodnjs456" style="border:none;"  readonly></td>
                                 <td><input type="text" name="" id="" value="윤태원"style="border:none;" readonly></td>
                                 <td><input type="text" name="" id="" value="dbsxodnjs456@naver.com" style="border:none;" readonly></td>
-                                <td><input type="text" name="" id="" value="1234"style="border:none;" readonly></td> -->
                             </tr>
                         </tbody>
                     </table>
@@ -71,7 +68,7 @@
     	
     
     //$('header').css('display','none');
-    	
+/*    	
         for(var i=0;i<10;i++) {
         var list = "";
             list += "<tr>";
@@ -89,7 +86,7 @@
             list +="<td><input type='text' value='1234'style='border:none;' readonly></td>";
             list += "</tr>";
             $('tbody').append(list);
-        }
+        } */
         $('#list').change(function() {
             if($('#list').val() == "a") {
                 alert('a');

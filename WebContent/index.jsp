@@ -4,12 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png">
-<title>BLOG</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="/css/index.css">
-<link rel="stylesheet" href="/css/header.css">
-<link rel="stylesheet" href="/css/class.css">
 </head>
 <style>
     
@@ -41,6 +35,7 @@
                             <li class=""><a href="###" class="blue under_none" id="sports">스포츠</a></li>
                             <span class="nav_toggle">   
                                 <ul class="list_style nav_list">
+                                	<li><a href="/board/list.jsp">→ 전체</a></li>
                                     <li><a href="/board/list.jsp">→ 농구</a></li>
                                     <li><a href="/board/list.jsp">→ 축구</a></li>
                                     <li><a href="/board/list.jsp">→ 야쿠</a></li>
@@ -50,6 +45,7 @@
                             <li class=""><a href="###" id="taste" class="blue under_none">맛집탐방</a></li>
                             <span class="nav_toggle">   
                                 <ul class="list_style nav_list2">
+                                	<li><a href="/board/list.jsp">→ 전체</a></li>
                                     <li>→ 서울</li>
                                     <li>→ 부산</li>
                                     <li>→ 경기도</li>

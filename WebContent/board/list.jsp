@@ -53,9 +53,11 @@ PreparedStatement pstmt = null;
 					<thead class="thead-dark">
 						<tr>
 							<th>번호</th>
+							<th>취미</th>
 							<th>제목</th>
 							<th>글쓴이</th>
 							<th>작성일시</th>
+							<th>조회수</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -65,28 +67,34 @@ try {
 	conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 	ResultSet rs = null;
 	
-	String sql = "SELECT A.ID, A.TITLE, A.USER_ID, A.DATE_TIME, B.NICKNAME "; 
+	String sql = "SELECT A.BNO, A.ID, A.HOBBY, A.TITLE, A.USER_ID, A.DATE_TIME, A.VIEW_COUNT, B.NICKNAME "; 
 	sql += "FROM JP_BOARD AS A ";
 	sql += "LEFT JOIN JP_USER AS B ON A.USER_ID = B.ID ";
-	sql += "ORDER BY A.ID DESC;";
+	sql += "ORDER BY A.BNO DESC;";
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 	
 	// TB_BOARD 정보 있음
 	if (rs != null) {				
 		int i = 1;
-		while(rs.next()) {		
+		while(rs.next()) {
+			String bno = rs.getNString("A.BNO");
 			String boardId = rs.getNString("A.ID");
+			String hobby = rs.getNString("A.HOBBY");
 			String title = rs.getNString("A.TITLE");
 			String userId = rs.getNString("A.USER_ID");
 			String dateTime = rs.getNString("A.DATE_TIME");
 			String name = rs.getNString("B.NICKNAME");
+			int count = rs.getInt("A.VIEW_COUNT");
+			
 %>
 						<tr>
-							<td><%=i %></td>
+							<td><%=bno%></td>
+							<td><%=hobby%></td>
 							<td><a href="<c:url value='/' />board/view.jsp?board_id=<%=boardId%>"><%=title %></a></td>
-							<td><%=name %>(<%=userId %>)</td>
+							<td><%=name%>(<%=userId %>)</td>
 							<td><%=dateTime %></td>
+							<td><%=count%></td>
 						</tr>
 <%		
 			i++;

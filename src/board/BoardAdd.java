@@ -32,15 +32,16 @@ public class BoardAdd extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-				
+		
+		HttpSession session = request.getSession();
 		//HttpSession session = request.getSession(true);
-		//String userId = (String) session.getAttribute("id");
-		String userId = "test"; ///////////////////////////////////////////////////////////////////추후 수정 바람!!
+		String userId = (String) session.getAttribute("id");
+		String hobby = request.getParameter("hobby");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		
+		System.out.println(userId);
 		Date time = new Date();
-		SimpleDateFormat format = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat ("yyyy-MM-dd HH:mm");
 		String dateTime = format.format(time);
 		
 		Connection conn = null;
@@ -51,14 +52,17 @@ public class BoardAdd extends HttpServlet {
 			conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 			
 			String sql;
-			sql = "INSERT INTO JP_BOARD (TITLE, CONTENT, USER_ID, DATE_TIME) VALUES (?, ?, ?, ?);";
+			sql = "INSERT INTO JP_BOARD (ID, HOBBY, TITLE, CONTENT, USER_ID, DATE_TIME, VIEW_COUNT) VALUES (?, ?, ?, ?, ?, ?, ?);";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, title);
-				pstmt.setString(2, content);
-				pstmt.setString(3, userId);
-				pstmt.setString(4, dateTime);
+				pstmt.setString(1, userId);
+				pstmt.setString(2, hobby);
+				pstmt.setString(3, title);
+				pstmt.setString(4, content);
+				pstmt.setString(5, userId);
+				pstmt.setString(6, dateTime);
+				pstmt.setInt(7, 0);
 				pstmt.executeUpdate();
 			} catch(Exception e) {
 				System.out.println("e: " + e.toString());

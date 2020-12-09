@@ -5,7 +5,6 @@
 
 <%
 String boardId = request.getParameter("board_id");
-
 //mariadb 연결정보
 String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
 String DB_URL = "jdbc:mariadb://jeongps.com:3306/japan_dbsxodnjs456";
@@ -23,7 +22,8 @@ String commentContent = "";
 String commentUserId = "";
 String commentDateTime = "";
 String commentNickname = "";
-
+int count = 0;
+int bno = 0;
 Connection conn = null;
 PreparedStatement pstmt = null;
 
@@ -33,7 +33,7 @@ try {
 	ResultSet rs = null;
 	
 	// 닉네임을 가지고 오기 위한 JP_BOARD, JP_USER 조인
-	String sql = "SELECT B.ID, B.TITLE, B.USER_ID, B.DATE_TIME, B.CONTENT, U.NICKNAME "; 
+	String sql = "SELECT B.BNO,B.ID, B.TITLE, B.USER_ID, B.DATE_TIME, B.CONTENT, B.VIEW_COUNT, U.NICKNAME "; 
 	sql += "FROM JP_BOARD AS B ";
 	sql += "LEFT JOIN JP_USER AS U ON B.USER_ID = U.ID ";
 	sql += "WHERE B.ID=? LIMIT 1;";
@@ -43,23 +43,35 @@ try {
 	
 	// JP_BOARD 정보 있음
 	if (rs != null) {	
-		while(rs.next()) {		
+		while(rs.next()) {
 			title = rs.getNString("B.TITLE");
 			userId = rs.getNString("B.USER_ID");
 			dateTime = rs.getNString("B.DATE_TIME");
 			name = rs.getNString("U.NICKNAME");
 			content = rs.getNString("B.CONTENT");
+			count = rs.getInt("B.VIEW_COUNT");
+			bno = rs.getInt("B.BNO");
 		}
 	}
+	String sql2 = "UPDATE JP_BOARD SET VIEW_COUNT = ? WHERE BNO = ?";
+	pstmt = conn.prepareStatement(sql2);
+	pstmt.setInt(1, count+1);
+	pstmt.setInt(2, bno);
+	System.out.println(bno);
+	pstmt.executeUpdate();
 	rs.close();
 	pstmt.close();
 	conn.close();
+	
 } catch(Exception e) {
 	System.out.println("e: " + e.toString());
 } finally {
 	pstmt.close();
 	conn.close();
 }
+%>
+<%
+
 %>
 <!DOCTYPE html>
 <html>

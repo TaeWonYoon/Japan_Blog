@@ -8,11 +8,7 @@
 	<title>게시글 작성</title>
 	
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-		crossorigin="anonymous">	
-	
+	<link rel="stylesheet" href="/css/bootstrap.min.css">	
 	<style>
 		body {
 			margin-top: 70px;
@@ -27,6 +23,15 @@
 		<div class="card">
 			<div class="card-body">
 				<form name="addForm" method="post" action="<c:url value='/' />board/add">
+				<input type="hidden" name="id" value="<%=id%>"/>
+	    			<div class="form-group">
+  						<label>분야</label>
+  						<select name="hobby" id="hobby">
+  							<option value="">전체</option>
+  							<option value="운동">운동</option>
+  							<option value="맛집">맛집</option>
+  						</select>
+					</div>
 	    			<div class="form-group">
   						<label>제목</label>
   						<input type="text" class="form-control" name="title">
@@ -52,7 +57,13 @@
 <%@ include file="/layout/footer.jsp" %>
 
 <script>
+
+	
 	$('#btnAdd').on('click', function() {
+		if($('#hobby').val() == "") {
+			alert('분야를 선택해주세요');
+			return false;
+		}
 		if (!$('input[name="title"]').val()) {
 			alert('제목을 입력해주세요');
 			$('input[name="title"]').focus();
@@ -67,6 +78,7 @@
 		
 		$('form[name=addForm]').submit();
 	});
+	
 </script>
 	
 </body>
