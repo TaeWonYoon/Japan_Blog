@@ -22,8 +22,10 @@ String commentContent = "";
 String commentUserId = "";
 String commentDateTime = "";
 String commentNickname = "";
+String postId = "";
+
 int count = 0;
-int bno = 0;
+int bno = Integer.parseInt(request.getParameter("board_bno"));
 Connection conn = null;
 PreparedStatement pstmt = null;
 
@@ -33,31 +35,30 @@ try {
 	ResultSet rs = null;
 	
 	// 닉네임을 가지고 오기 위한 JP_BOARD, JP_USER 조인
-	String sql = "SELECT B.BNO,B.ID, B.TITLE, B.USER_ID, B.DATE_TIME, B.CONTENT, B.VIEW_COUNT, U.NICKNAME "; 
+	String sql = "SELECT B.BNO, B.TITLE, B.ID, B.DATE_TIME, B.CONTENT, B.VIEW_COUNT, U.NICKNAME "; 
 	sql += "FROM JP_BOARD AS B ";
 	sql += "LEFT JOIN JP_USER AS U ON B.USER_ID = U.ID ";
-	sql += "WHERE B.ID=? LIMIT 1;";
+	sql += "WHERE B.BNO=? LIMIT 1;";
 	pstmt = conn.prepareStatement(sql);
-	pstmt.setNString(1, boardId);
+	pstmt.setInt(1, bno);
 	rs = pstmt.executeQuery();
 	
 	// JP_BOARD 정보 있음
 	if (rs != null) {	
 		while(rs.next()) {
 			title = rs.getNString("B.TITLE");
-			userId = rs.getNString("B.USER_ID");
 			dateTime = rs.getNString("B.DATE_TIME");
 			name = rs.getNString("U.NICKNAME");
 			content = rs.getNString("B.CONTENT");
 			count = rs.getInt("B.VIEW_COUNT");
 			bno = rs.getInt("B.BNO");
+			postId = rs.getString("B.ID");
 		}
 	}
 	String sql2 = "UPDATE JP_BOARD SET VIEW_COUNT = ? WHERE BNO = ?";
 	pstmt = conn.prepareStatement(sql2);
 	pstmt.setInt(1, count+1);
 	pstmt.setInt(2, bno);
-	System.out.println(bno);
 	pstmt.executeUpdate();
 	rs.close();
 	pstmt.close();
@@ -104,7 +105,7 @@ try {
 		<div class="card">
 			<div class="card-header"><%=title %></div>
 			<div class="card-body">
-				<p class="card-title"><%=name %> <%=dateTime %></p>
+				<p class="card-title"><%=name %>(<%=postId%>) <%=dateTime %></p>
 				<p class="card-text"><%=content %></p>
 			</div>
 			<div class="card-footer">
@@ -130,69 +131,15 @@ try {
 							</tr>
 						</thead>
 						<tbody>
-						<% 
-						try {
-							Class.forName(JDBC_DRIVER);
-							conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-							ResultSet rs = null;
-							
-							// 댓글 정보를 가지고 오기 위한 JP_COMMENT, JP_BOARD, JP_USER 조인
-							String sql = "SELECT C.COMMENT_ID, C.CONTENT, C.BOARD_ID, C.USER_ID, C.DATE_TIME, U.NICKNAME "
-									+ "FROM JP_COMMENT AS C "
-									+ "INNER JOIN JP_BOARD AS B ON C.BOARD_ID = B.ID "
-									+ "INNER JOIN JP_USER AS U ON C.USER_ID = U.ID "
-									+ "WHERE B.ID = ?;";
-							pstmt = conn.prepareStatement(sql);
-							pstmt.setNString(1, boardId);
-							rs = pstmt.executeQuery();
-							
-							// JP_COMMENT 정보 있음
-							if(rs != null) {
-								int i = 1;
-								while(rs.next()) {
-									commnetId = rs.getNString("C.COMMENT_ID");
-									commentContent = rs.getNString("C.CONTENT");
-									commentUserId = rs.getNString("C.USER_ID");
-									commentDateTime = rs.getNString("C.DATE_TIME");
-									commentNickname = rs.getNString("U.NICKNAME");
-							%>
-							<tr>
-								<td><%=i %></td>
-								<td><%=commentContent %></td>
-								<td><%=commentNickname %>(<%=commentUserId %>)</td>
-								<td><%=commentDateTime %></td>
-							</tr>
-						<%
-								i++;
-								}
-							}
-							
-							// JP_COMMENT 정보 없음
-							else {
-						%>
-							<tr>
-								<td colspan="4" class="text-center">등록된 댓글이 없습니다.</td>
-							</tr>
-						<%
-							}
-							rs.close();
-							pstmt.close();
-							conn.close();
-						} catch(Exception e) {
-							System.out.println("e: " + e.toString());
-						} finally {
-							pstmt.close();
-							conn.close();
-						}
-						%>
-							
+						<%@ include file="/board/comment.jsp" %>
 						</tbody>
 					</table>			
 				</div>
 			</div>
 			<div class="card-footer">
-			  <form name="commentAddForm" method="post" action="<c:url value='/' />comment/add">
-			  <input type="hidden" name="board_id" value="<%=boardId%>">
+			  <form name="commentAddForm" method="post" action="<c:url value='/' />board/coment" id="comment_submit">
+			  <input type="hidden" name="postId" value="<%=postId%>">
+			  <input type="hidden" name="bno" value="<%=bno%>">
 				<div class="input-group mb-3">
 				  <input type="text" class="form-control" placeholder="댓글을 입력하세요." name="comment_content">
 				  <div class="input-group-append">
@@ -246,7 +193,7 @@ try {
 			return false;
 		}
 		
-		$('form[name=commentAddForm]').submit();
+		$('#comment_submit').submit();
 	});
 </script>
 </body>

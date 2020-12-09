@@ -91,7 +91,7 @@ try {
 						<tr>
 							<td><%=bno%></td>
 							<td><%=hobby%></td>
-							<td><a href="<c:url value='/' />board/view.jsp?board_id=<%=boardId%>"><%=title %></a></td>
+							<td><a href="<c:url value='/' />board/view.jsp?board_bno=<%=bno%>"><%=title %></a></td>
 							<td><%=name%>(<%=userId %>)</td>
 							<td><%=dateTime %></td>
 							<td><%=count%></td>
