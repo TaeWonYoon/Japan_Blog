@@ -6,6 +6,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,10 +32,14 @@ public class BoardEdit extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		String boardId = request.getParameter("board_id");
+		Date time = new Date();
+		SimpleDateFormat format = new SimpleDateFormat ("yyyy-MM-dd HH:mm");
+		String dateTime = format.format(time);
+		
+		int bno = Integer.parseInt(request.getParameter("bno"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		
+		System.out.println("bno="+bno+" title="+title+" content="+content+" dataTime="+dateTime);
 		Connection conn = null;
 		Statement state = null;
 		PreparedStatement pstmt = null;
@@ -44,13 +50,14 @@ public class BoardEdit extends HttpServlet {
 			state = conn.createStatement();
 			
 			String sql;
-			sql = "UPDATE JP_BOARD SET TITLE=?, CONTENT=? WHERE ID=? LIMIT 1;";
+			sql = "UPDATE JP_BOARD SET TITLE = ?, CONTENT = ?, DATE_TIME = ? WHERE BNO = ?";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, title);
 				pstmt.setString(2, content);
-				pstmt.setString(3, boardId);
+				pstmt.setString(3, dateTime);
+				pstmt.setInt(4, bno);
 				pstmt.executeUpdate();
 			} catch(Exception e) {
 				System.out.println("e: " + e.toString());
@@ -75,7 +82,7 @@ public class BoardEdit extends HttpServlet {
 			}
 		}
 		
-		response.sendRedirect("../board/view.jsp?board_id=" + boardId);
+		response.sendRedirect("../board/view.jsp?board_bno=" + bno);
 	}
 
 }

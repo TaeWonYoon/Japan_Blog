@@ -1,79 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<%
-String boardId = request.getParameter("board_id");
-//mariadb 연결정보
-String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
-String DB_URL = "jdbc:mariadb://jeongps.com:3306/japan_dbsxodnjs456";
-String DB_USER = "dbsxodnjs456";
-String DB_PASSWORD = "dljeQPcyr0WZUKUS";
-
-String title = "";
-String userId = "";
-String dateTime = "";
-String name = "";
-String content = "";
-
-String commnetId = "";
-String commentContent = "";
-String commentUserId = "";
-String commentDateTime = "";
-String commentNickname = "";
-String postId = "";
-
-int count = 0;
-int bno = Integer.parseInt(request.getParameter("board_bno"));
-Connection conn = null;
-PreparedStatement pstmt = null;
-
-try {
-	Class.forName(JDBC_DRIVER);
-	conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-	ResultSet rs = null;
-	
-	// 닉네임을 가지고 오기 위한 JP_BOARD, JP_USER 조인
-	String sql = "SELECT B.BNO, B.TITLE, B.ID, B.DATE_TIME, B.CONTENT, B.VIEW_COUNT, U.NICKNAME "; 
-	sql += "FROM JP_BOARD AS B ";
-	sql += "LEFT JOIN JP_USER AS U ON B.USER_ID = U.ID ";
-	sql += "WHERE B.BNO=? LIMIT 1;";
-	pstmt = conn.prepareStatement(sql);
-	pstmt.setInt(1, bno);
-	rs = pstmt.executeQuery();
-	
-	// JP_BOARD 정보 있음
-	if (rs != null) {	
-		while(rs.next()) {
-			title = rs.getNString("B.TITLE");
-			dateTime = rs.getNString("B.DATE_TIME");
-			name = rs.getNString("U.NICKNAME");
-			content = rs.getNString("B.CONTENT");
-			count = rs.getInt("B.VIEW_COUNT");
-			bno = rs.getInt("B.BNO");
-			postId = rs.getString("B.ID");
-		}
-	}
-	String sql2 = "UPDATE JP_BOARD SET VIEW_COUNT = ? WHERE BNO = ?";
-	pstmt = conn.prepareStatement(sql2);
-	pstmt.setInt(1, count+1);
-	pstmt.setInt(2, bno);
-	pstmt.executeUpdate();
-	rs.close();
-	pstmt.close();
-	conn.close();
-	
-} catch(Exception e) {
-	System.out.println("e: " + e.toString());
-} finally {
-	pstmt.close();
-	conn.close();
-}
+<% 
+	String board_bno = request.getParameter("board_bno");
+	String boardHobby = request.getParameter("boardHobby");
 %>
-<%
 
-%>
+<%@ include file="/db/viewDB.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,39 +15,36 @@ try {
 <title>게시글 보기</title>
 
 <!-- Bootstrap CSS -->
-	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-		crossorigin="anonymous">	
-		
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/index.css">
 	<link rel="stylesheet" href="/css/class.css">
-	
 	<style>
-		body {
-			margin-top: 70px;
-		}
+	#comment_d:hover {
+		background: #e6e6e6;
+	}
 	</style>
-		
 </head>
 <body>
 <%@ include file="/layout/header.jsp" %>
+<br><br><br>
 <div class="container">
 
-	<div class="view-box">
+	<div class="view-box" style="height:900px;">
 		<!-- 글 내용 -->
 		<div class="card">
 			<div class="card-header"><%=title %></div>
 			<div class="card-body">
-				<p class="card-title"><%=name %>(<%=postId%>) <%=dateTime %></p>
+				<div class="text-right"><p class="card-title"><%=name %>(<%=postId%>) <%=dateTime %></p></div><br><br>
 				<p class="card-text"><%=content %></p>
 			</div>
 			<div class="card-footer">
-				<a href="<c:url value='/' />board/list.jsp" class="btn btn-primary">목록</a>
+				<a href="<c:url value='/' />board/list.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">목록</a>
+				<% if(postId.equals(id)) { %>
 				<div class="float-right">
-					<a href="<c:url value='/' />board/edit.jsp?board_id=<%=boardId %>" class="btn btn-warning">수정</a>
+					<a href="<c:url value='/' />board/edit.jsp?board_bno=<%=board_bno%>" class="btn btn-warning">수정</a>
 					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">삭제</button>
 				</div>
+			<% } %>
 			</div>
 		</div>
 		
@@ -124,10 +55,11 @@ try {
 					<table class="table" style="margin-bottom:0;">
 						<thead>
 							<tr>
-								<th style="width:7%;">번호</th>
-								<th style="width:70%;">내용</th>
-								<th style="width:13%;">작성자</th>
-								<th style="width:10%;">작성일시</th>
+								<th style="width:8%;">번호</th>
+								<th style="width:55%;">내용</th>
+								<th style="width:12%;">작성자</th>
+								<th style="width:16%;">작성일시</th>
+								<th style="width:15%;">삭제</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -136,10 +68,10 @@ try {
 					</table>			
 				</div>
 			</div>
-			<div class="card-footer">
+			<div class="card-footer" >
 			  <form name="commentAddForm" method="post" action="<c:url value='/' />board/coment" id="comment_submit">
 			  <input type="hidden" name="postId" value="<%=postId%>">
-			  <input type="hidden" name="bno" value="<%=bno%>">
+			  <input type="hidden" name="bno" value="<%=board_bno%>">
 				<div class="input-group mb-3">
 				  <input type="text" class="form-control" placeholder="댓글을 입력하세요." name="comment_content">
 				  <div class="input-group-append">
@@ -163,7 +95,7 @@ try {
 				</button>
 			</div>
 			<div class="modal-body">
-				<p class="text-danger">삭제된 내용은 복구가 불가능합니다. 정말삭제할까요?</p>
+				<p class="text-danger" >삭제된 내용은 복구가 불가능합니다. 정말삭제할까요?</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"
@@ -173,15 +105,29 @@ try {
 		</div>
 	</div>
 </div>
-
+</div>
 <form id="deleteForm" method="post" action="<c:url value='/' />board/delete">
-	<input type="hidden" name="board_id" value="<%=boardId%>">
+	<input type="hidden" name="bno" value="<%=bno%>">
+	<input type="hidden" name="boardHobby" value="<%=boardHobby%>">
+</form>
+<form id="comment_delete" method="get" action="<c:url value='/' />board/delete">
+	<input type="hidden" name="bno" value="<%=bno%>">
+	<input type="hidden" name="bno_comment" value="<%=bno_comment%>">
+	<input type="hidden" name="boardHobby" value="<%=boardHobby%>">
 </form>
 
 <%@ include file="/layout/script.jsp" %>
 <%@ include file="/layout/footer.jsp" %>
 		
 <script>
+	
+	$('#c_delete').on('click', function() {
+		if(confirm('삭제하시겠습니까?')) {
+			alert('삭제했습니다');
+			$('#comment_delete').submit();
+		}
+		
+	});
 	$('#btnDelete').on('click', function() {
 		$('#deleteForm').submit();
 	});

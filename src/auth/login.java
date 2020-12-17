@@ -44,7 +44,7 @@ public class login extends HttpServlet {
         
 		String id = request.getParameter("id");
 		String password = request.getParameter("pw");
-		
+		int level = 0;
 		Boolean idCorrect = false;
 		Boolean passwordCorrect = false;
 		
@@ -72,7 +72,7 @@ public class login extends HttpServlet {
 				
 				while(rs.next()) {
 					String passwordInDB = rs.getNString("PASSWORD");
-					
+					level =  rs.getInt("USER_TYPE");
 					// 비밀번호 일치
 					if (password.equals(passwordInDB)) {
 						passwordCorrect = true;
@@ -109,8 +109,10 @@ public class login extends HttpServlet {
 		if (idCorrect && passwordCorrect) {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
+			session.setAttribute("level", level);
 			session.setAttribute("login", true);
 			response.sendRedirect("/index.jsp");
+			System.out.println(level);
 		} 
 		
 		// 아이디, 비밀번호 틀림

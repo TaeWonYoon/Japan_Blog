@@ -37,13 +37,12 @@ public class BoardAdd extends HttpServlet {
 		//HttpSession session = request.getSession(true);
 		String userId = (String) session.getAttribute("id");
 		String hobby = request.getParameter("hobby");
+		System.out.println(hobby);
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-		System.out.println(userId);
 		Date time = new Date();
 		SimpleDateFormat format = new SimpleDateFormat ("yyyy-MM-dd HH:mm");
 		String dateTime = format.format(time);
-		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
@@ -87,6 +86,6 @@ public class BoardAdd extends HttpServlet {
 			}
 		}
 		
-		response.sendRedirect("../board/list.jsp");
+		response.sendRedirect("/board/list.jsp?boardHobby="+hobby);
 	}
 }

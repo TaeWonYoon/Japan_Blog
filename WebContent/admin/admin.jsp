@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/db/DB.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +13,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
+
 	<%@ include file="/layout/header.jsp" %>
 	
     <div class="container">
-        <div class="list-box">
+        <div class="list-box" style="height:900px;">
             <div class="card">
                 <div class="card-header">
                     <select name="level" id="level" style="width:80px;">
@@ -40,6 +42,43 @@
                             </tr>
                         </thead>
                         <tbody>
+                        <%
+try {
+	Class.forName(JDBC_DRIVER);
+	conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+	ResultSet rs = null;
+	
+	String sql = "SELECT * FROM JP_USER";
+	pstmt = conn.prepareStatement(sql);
+	rs = pstmt.executeQuery();
+	
+	// TB_BOARD 정보 있음
+
+		while(rs.next()) {
+			String userId = rs.getNString("ID");
+			String name = rs.getNString("NAME");
+			String email = rs.getNString("EMAIL");
+			String userType = rs.getNString("USER_TYPE");
+			
+%>
+						<tr>
+							<td><%=userType%></td>
+							<td><%=userId%></td>
+							<td><%=name%></td>
+							<td><%=email%></td>
+						</tr>
+<%								
+	}
+	rs.close();
+	pstmt.close();
+	conn.close();
+} catch(Exception e) {
+	System.out.println("e: " + e.toString());
+} finally {
+	pstmt.close();
+	conn.close();
+}
+%>	
                             <tr>
                                 <td>
                                     <select name="level" id="" style="width:80px;">

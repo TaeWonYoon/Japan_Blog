@@ -35,7 +35,7 @@
                             <li class=""><a href="###" class="blue under_none" id="sports">스포츠</a></li>
                             <span class="nav_toggle">   
                                 <ul class="list_style nav_list">
-                                	<li><a href="/board/list.jsp">→ 전체</a></li>
+                                	<li><a href="/board/list.jsp?boardHobby=exercise">→ 전체</a></li>
                                     <li><a href="/board/list.jsp">→ 농구</a></li>
                                     <li><a href="/board/list.jsp">→ 축구</a></li>
                                     <li><a href="/board/list.jsp">→ 야쿠</a></li>
@@ -45,7 +45,7 @@
                             <li class=""><a href="###" id="taste" class="blue under_none">맛집탐방</a></li>
                             <span class="nav_toggle">   
                                 <ul class="list_style nav_list2">
-                                	<li><a href="/board/list.jsp">→ 전체</a></li>
+                                	<li><a href="/board/list.jsp?boardHobby=taste">→ 전체</a></li>
                                     <li>→ 서울</li>
                                     <li>→ 부산</li>
                                     <li>→ 경기도</li>
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div id="board_p">
-                        <h3 style="text-align: center; margin-bottom: 10px;">인기 게시글</h3>
+                        <h3 style="text-align: center; margin-bottom: 10px;">최신게시물 게시글</h3>
                         <div>
                             <table border="1" style="text-align: center;">
                                 <colgroup>

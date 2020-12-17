@@ -24,15 +24,14 @@ public class BoardDelete extends HttpServlet {
 	private final String DB_PASSWORD = "dljeQPcyr0WZUKUS";
        
     public BoardDelete() {
-        super();
     }
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
-		String boardId = request.getParameter("board_id");
-		
-		Connection conn = null;
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	request.setCharacterEncoding("UTF-8");
+    	String bno_comment = request.getParameter("bno_comment");
+    	String bno = request.getParameter("bno");
+    	String boardHobby = request.getParameter("boardHobby");
+    	Connection conn = null;
 		Statement state = null;
 		PreparedStatement pstmt = null;
 		
@@ -42,11 +41,11 @@ public class BoardDelete extends HttpServlet {
 			state = conn.createStatement();
 			
 			String sql;
-			sql = "DELETE FROM JP_BOARD WHERE ID=? LIMIT 1;";
+			sql = "DELETE FROM JP_COMMENT WHERE BNO_COMMENT=? LIMIT 1;";
 			
 			try {
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, boardId);
+				pstmt.setString(1, bno_comment);
 				pstmt.executeUpdate();
 			} catch(Exception e) {
 				System.out.println("e: " + e.toString());
@@ -71,7 +70,56 @@ public class BoardDelete extends HttpServlet {
 			}
 		}
 		
-		response.sendRedirect("../board/list.jsp");
+		response.sendRedirect("../board/view.jsp?board_bno="+bno+"&boardHobby="+boardHobby);
+    
+    }
+    
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		
+		String bno = request.getParameter("bno");
+		String boardHobby = request.getParameter("boardHobby");
+		
+		Connection conn = null;
+		Statement state = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			Class.forName(JDBC_DRIVER);
+			conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+			state = conn.createStatement();
+			
+			String sql;
+			sql = "DELETE FROM JP_BOARD WHERE BNO=? LIMIT 1;";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, bno);
+				pstmt.executeUpdate();
+			} catch(Exception e) {
+				System.out.println("e: " + e.toString());
+			}
+		} catch(Exception e) {
+			System.out.println("e: " + e.toString());
+		} finally {
+			if (state != null) {
+				try {
+					state.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		response.sendRedirect("../board/list.jsp?boardHobby="+boardHobby);
 	}
 
 }

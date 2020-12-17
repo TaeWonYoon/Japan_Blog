@@ -1,21 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.Random" %> 
-<%@ page import="java.util.Date" %> 
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.sql.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-
-//mariadb 연결정보
-String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
-String DB_URL = "jdbc:mariadb://jeongps.com:3306/japan_dbsxodnjs456";
-String DB_USER = "dbsxodnjs456";
-String DB_PASSWORD = "dljeQPcyr0WZUKUS";
-
-Connection conn = null;
-PreparedStatement pstmt = null;
+String boardHobby = request.getParameter("boardHobby"); 
 %>
+<%@ include file="/db/DB.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -25,9 +14,7 @@ PreparedStatement pstmt = null;
 
 <!-- Bootstrap CSS -->
 	<link rel="stylesheet"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-		crossorigin="anonymous">
+		href="/css/bootstrap.min.css">
 		
 	<link rel="stylesheet" href="/css/index.css">
 	<link rel="stylesheet" href="/css/class.css">	
@@ -43,10 +30,10 @@ PreparedStatement pstmt = null;
 
 <div class="container">
 
-	<div class="list-box">
+	<div class="list-box" style="height:900px;">
 		<div class="card">
 			<div class="card-header">
-				<a href="<c:url value='/' />board/add.jsp" class="btn btn-primary">등록</a>
+				<a href="<c:url value='/' />board/add.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">등록</a>
 			</div>
 			<div class="card-body">
 				<table class="table table-hover">
@@ -88,15 +75,17 @@ try {
 			int count = rs.getInt("A.VIEW_COUNT");
 			
 %>
+<% if(boardHobby.equals(hobby)) { %>
 						<tr>
 							<td><%=bno%></td>
 							<td><%=hobby%></td>
-							<td><a href="<c:url value='/' />board/view.jsp?board_bno=<%=bno%>"><%=title %></a></td>
+							<td><a href="<c:url value='/' />board/view.jsp?board_bno=<%=bno%>&boardHobby=<%=boardHobby%>"><%=title %></a></td>
 							<td><%=name%>(<%=userId %>)</td>
 							<td><%=dateTime %></td>
 							<td><%=count%></td>
 						</tr>
 <%		
+	}
 			i++;
 		}
 	} 
