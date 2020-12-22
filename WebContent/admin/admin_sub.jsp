@@ -16,9 +16,9 @@
 <body>
 
 	<%@ include file="/layout/header.jsp" %>
-	<% if(level != 5) {
+	<% if(level != 4) {
 		out.println("<script>");
-		out.println("alert('관리자가 아닙니다.')");
+		out.println("alert('운영자가 아닙니다.')");
 		out.println("history.back();");
 		out.println("</script>");
 	}%>
@@ -46,7 +46,7 @@ try {
 	conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
 	ResultSet rs = null;
 	
-	String sql = "SELECT * FROM JP_USER WHERE USER_TYPE < 5";
+	String sql = "SELECT * FROM JP_USER WHERE USER_TYPE < 4";
 	pstmt = conn.prepareStatement(sql);
 	rs = pstmt.executeQuery();
 	
@@ -61,32 +61,23 @@ try {
 %>
 						<tr>
 							<td>
-							<form action="<c:url value='/' />admin.do"  method="post">
+							<form action="<c:url value='/' />admin.do"  method="get">
 								<select name="level" id="" style="width:80px;">
 					
-                    <% if(userType == 4) {%>
-                    					<option value="1" size="4">새싹</option>
-                                        <option value="2">잎사귀</option>
-                                        <option value="3">열매</option>
-                                        <option value="4" selected>운영자</option>
-                                      <% } %>
                     <% if(userType == 3) {%>
                     					<option value="1" size="4">새싹</option>
                                         <option value="2">잎사귀</option>
                                         <option value="3" selected>열매</option>
-                                        <option value="4" selected>운영자</option>
                                       <% } %>
                     <% if(userType == 2) {%>
                     					<option value="1" size="4">새싹</option>
                                         <option value="2" selected>잎사귀</option>
                                         <option value="3">열매</option>
-                                        <option value="4" >운영자</option>
                                       <% } %>
                    <% if(userType == 1) {%>
                     					<option value="1" size="4" selected>새싹</option>
                                         <option value="2">잎사귀</option>
                                         <option value="3">열매</option>
-                                        <option value="4" >운영자</option>
                                       <% } %>
                                 </select>
 								

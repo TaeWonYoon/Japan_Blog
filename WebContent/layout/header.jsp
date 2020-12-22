@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% 
 // 세션 정보
 	String id = (String)session.getAttribute("id");
@@ -29,8 +30,11 @@
      <span class="header_nav"><%=id%>님 환영합니다.</span><span class="header_nav"> | </span>
      <span><a href="/logout" class="under_none header_nav">로그아웃</a></span>
      
-     <%if(level > 7) { %>
+     <%if(level == 5) { %>
      	<span class="header_nav" > | </span> <span ><a href="/admin/admin.jsp" class="under_none header_nav">관리자</a></span>
+     <%} %>
+     <%if(level == 4) { %>
+     	<span class="header_nav" > | </span> <span ><a href="/admin/admin_sub.jsp" class="under_none header_nav">운영자</a></span>
      <%} %>
    
 	</header>
