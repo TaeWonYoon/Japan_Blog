@@ -33,9 +33,15 @@
                       	  		<img src="./img/a.jpg" alt="" width="150" height="150" style="margin-left:45px;margin-bottom:10px;"/>
                       	  	<%}%>
                       	  </li>
-                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">별명</a> : <span><%=nickName %></span></li>
-                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">등급</a> : <span><%=grade %></span></li>
-                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">아이디</a> : <span><%=id %></span></li>
+                      	  <%if(id != null) {%>
+	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">별명</a> : <span><%=nickName %></span></li>
+	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">등급</a> : <span><%=grade %></span></li>
+	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">아이디</a> : <span><%=id %></span></li>
+                      	  <%} else {%>
+	                      	  <li><a href="#" class="black under_none m-l" style="font-size:18px;">별명</a> : <span></span></li>
+	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">등급</a> : <span></span></li>
+	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">아이디</a> : <span></span></li>
+                      	  <%} %>
                       </ul>
                     </div>
                     <div id="profile2">
@@ -120,7 +126,7 @@
     </div>
     <script>
     $("#n_b").click(function() {
-    	window.open("./notice/notice.jsp","", "resizable=yes,left=10,top=250,width=400,height=400");
+    	window.open("./notice/notice.jsp","", "resizable=yes,left=10,top=250,left=250,width=400,height=400");
     })
     <%--
         $("#header").load("header.html");

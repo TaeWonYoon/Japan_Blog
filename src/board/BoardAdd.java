@@ -43,16 +43,6 @@ public class BoardAdd extends HttpServlet {
 		String img = null;
 		Collection<Part> p = request.getParts();
 		
-		for(Part data : p) {
-			if(data.getContentType() != null) {
-				String fileName = data.getSubmittedFileName();
-				if(fileName != null && fileName.length() != 0) {
-					 data.write(path+fileName);
-					 img = fileName;
-				}
-			}
-		}
-		
 		String userId = (String) session.getAttribute("id");
 		String hobby = request.getParameter("hobby");
 		System.out.println(hobby);
@@ -61,6 +51,17 @@ public class BoardAdd extends HttpServlet {
 		Date time = new Date();
 		SimpleDateFormat format = new SimpleDateFormat ("yyyy-MM-dd HH:mm");
 		String dateTime = format.format(time);
+		
+		for(Part data : p) {
+			if(data.getContentType() != null) {
+				String fileName = data.getSubmittedFileName();
+				if(fileName != null && fileName.length() != 0) {
+					 data.write(path+userId+"_"+fileName);
+					 img = userId+"_"+fileName;
+				}
+			}
+		}
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		
