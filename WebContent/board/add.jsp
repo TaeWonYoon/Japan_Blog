@@ -15,7 +15,7 @@
 </head>
 <body>
 <%@ include file="/layout/header.jsp" %>
-<% if(id == null) {
+<% if(id == null || id.equals("")) {
 	out.println("<script>");
 	out.println("alert('로그인후 입력하세요')");
 	out.println("history.back()");
