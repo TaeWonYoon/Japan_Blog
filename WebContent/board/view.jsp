@@ -36,7 +36,9 @@
 			<div class="card-body">
 				<div class="text-right"><p class="card-title">글쓴이 : <%=name %>(<%=postId%>)<br><%=dateTime %></p></div><hr/><br><br>
 				<p class="card-text"><%=content %></p>
-				<div class="text-right"><img src="../upload/<%=img %>" width="150" height="150"></div>
+				<% if(img != null) { %>
+				<div class="text-center"><img src="../upload/<%=img %>" width="200" height="200" alt="이미지 없음"></div>
+				<%} %>
 			</div>
 			<div class="card-footer">
 				<a href="<c:url value='/' />board/list.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">목록</a>
@@ -77,6 +79,7 @@
 				  <input type="text" class="form-control" placeholder="댓글을 입력하세요." name="comment_content">
 				  <div class="input-group-append">
 				    <button class="btn btn-outline-primary" type="button" id="btnCommentAdd">등록</button>
+				    <input type="hidden" id="cmt" value="<%=id%>" >
 				  </div>
 				</div>
 		  	  </form>
@@ -133,13 +136,18 @@
 		$('#deleteForm').submit();
 	});
 	
+	console.log($('#cmtId').val());
 	$('#btnCommentAdd').on('click', function() {
+		
 		if (!$('input[name="comment_content"]').val()) {
 			alert('댓글 내용을 입력해주세요');
 			$('input[name="comment_content"]').focus();
 			return false;
 		}
-		
+		if($('#cmt').val() == null || $('#cmt').val() == "") {
+			alert('로그인후 사용가능');
+			return false;
+		}
 		$('#comment_submit').submit();
 	});
 </script>

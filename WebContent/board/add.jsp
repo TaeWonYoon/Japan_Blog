@@ -15,6 +15,12 @@
 </head>
 <body>
 <%@ include file="/layout/header.jsp" %>
+<% if(id == null) {
+	out.println("<script>");
+	out.println("alert('로그인후 입력하세요')");
+	out.println("history.back()");
+	out.println("</script>");
+}	%>
 <div class="container">
 <br>
 	<div class="add-box" style="height:700px;">
