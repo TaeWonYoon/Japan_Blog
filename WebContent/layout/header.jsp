@@ -10,6 +10,11 @@
 	if(session.getAttribute("level") != null) {
 		level = (Integer)session.getAttribute("level");
 	}
+	String grade = null;
+	if((String)session.getAttribute("grade") != null) {
+		grade = (String)session.getAttribute("grade");
+	};
+	String nickName = (String)session.getAttribute("nickName");
 %>
 <!DOCTYPE html>
 <html>

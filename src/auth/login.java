@@ -45,6 +45,7 @@ public class login extends HttpServlet {
 		String id = request.getParameter("id");
 		String password = request.getParameter("pw");
 		int level = 0;
+		String nickName = "";
 		Boolean idCorrect = false;
 		Boolean passwordCorrect = false;
 		
@@ -72,6 +73,7 @@ public class login extends HttpServlet {
 				
 				while(rs.next()) {
 					String passwordInDB = rs.getNString("PASSWORD");
+					nickName = rs.getNString("NICKNAME");
 					level =  rs.getInt("USER_TYPE");
 					// 비밀번호 일치
 					if (password.equals(passwordInDB)) {
@@ -110,9 +112,22 @@ public class login extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("id", id);
 			session.setAttribute("level", level);
+			String grade = "";
+			if(level == 1) {
+				grade = "새싹";
+			} else if (level == 2) {
+				grade = "잎사귀";
+			} else if (level == 3) {
+				grade = "열매";
+			} else if (level == 4) {
+				grade = "운영자";
+			} else {
+				grade = "관리자";
+			}
+			session.setAttribute("grade", grade);
+			session.setAttribute("nickName", nickName);
 			session.setAttribute("login", true);
 			response.sendRedirect("/index.jsp");
-			System.out.println(level);
 		} 
 		
 		// 아이디, 비밀번호 틀림

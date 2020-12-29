@@ -11,14 +11,9 @@ String boardHobby = request.getParameter("boardHobby");
 <head>
 <meta charset="UTF-8">
 <title>게시글 목록</title>
-
-<!-- Bootstrap CSS -->
-	<link rel="stylesheet"
-		href="/css/bootstrap.min.css">
-		
 	<link rel="stylesheet" href="/css/index.css">
 	<link rel="stylesheet" href="/css/class.css">	
-	
+	<link rel="stylesheet" href="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.css"/>
 	<style>
 		.container {
 			margin-top: 70px;
@@ -30,13 +25,13 @@ String boardHobby = request.getParameter("boardHobby");
 
 <div class="container">
 
-	<div class="list-box" style="height:900px;">
+	<div class="list-box" style="height:800px;">
 		<div class="card">
-			<div class="card-header">
-				<a href="<c:url value='/' />board/add.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">등록</a>
-			</div>
+			<div class="card-header" >
+				<a href="<c:url value='/' />board/add.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary" >등록</a>
+			</div><br>
 			<div class="card-body">
-				<table class="table table-hover">
+				<table class="table table-hover" id="foo-table">
 					<thead class="thead-dark">
 						<tr>
 							<th>번호</th>
@@ -78,7 +73,13 @@ try {
 <% if(boardHobby.equals(hobby)) { %>
 						<tr>
 							<td><%=bno%></td>
-							<td><%=hobby%></td>
+						<%if(hobby.equals("exercise")) {%>
+							<td>운동</td>
+						<%} if(hobby.equals("taste")) {%>
+							<td>맛집</td>
+						<%} if(hobby.equals("suda")) {%>
+							<td>수다</td>
+						<%} %>
 							<td><a href="<c:url value='/' />board/view.jsp?board_bno=<%=bno%>&boardHobby=<%=boardHobby%>"><%=title %></a></td>
 							<td><%=name%>(<%=userId %>)</td>
 							<td><%=dateTime %></td>
@@ -119,6 +120,14 @@ try {
 
 <%@ include file="/layout/script.jsp" %>
 <%@ include file="/layout/footer.jsp" %>
-
+<script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>
+<script>
+	$(document).ready( function () {
+		$("#foo-table").DataTable({
+		    order: [[0, 'desc']],
+		    ordering: true,
+	    });
+	} );
+</script>
 </body>
 </html>

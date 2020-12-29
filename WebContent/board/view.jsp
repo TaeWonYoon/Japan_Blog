@@ -34,8 +34,9 @@
 		<div class="card">
 			<div class="card-header"><%=title %></div>
 			<div class="card-body">
-				<div class="text-right"><p class="card-title"><%=name %>(<%=postId%>) <%=dateTime %></p></div><br><br>
+				<div class="text-right"><p class="card-title">글쓴이 : <%=name %>(<%=postId%>)<br><%=dateTime %></p></div><hr/><br><br>
 				<p class="card-text"><%=content %></p>
+				<div class="text-right"><img src="../upload/<%=img %>" width="150" height="150"></div>
 			</div>
 			<div class="card-footer">
 				<a href="<c:url value='/' />board/list.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">목록</a>

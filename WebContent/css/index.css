@@ -13,13 +13,12 @@ header {
 
 #section {
     width: 1920px;
-    height: 1200px;
+    height: 900px;
 }
 #aside {
     float: left;
     width: 300px;
-    height: 900px;
-    border-bottom: 1px solid black;
+    height: 300px;
 }
 
 
@@ -29,12 +28,12 @@ header {
     margin: 0 auto;
     margin-top: 30px;
     background: white;
-    height: 740px;
+    height: 300px;
 }
 #article{
     float: left;
     width: 1300px;
-    height: 1200px;
+    height: 900px;
     border-right: 1px solid black;
     border-left: 1px solid black;
 }
@@ -44,35 +43,17 @@ header {
 #board_n {
     height: 400px;
 }
-#profile {
-    position: relative;
-    border: 1px solid black;
-    width: 190px !important;
-    height:350px !important;
-}
-#profile_one {
-    width:150px !important;
-    height:150px !important;
-}
-#profile_two {
-    position: absolute;
-    top: 150px;
-    left: 20px;
-    width:120px !important; 
-    height:150px !important;
-    margin: 0 auto;
-}
+
 .nav_list {
-    display: none;
+    
     margin-left: 15px;
 }
 .nav_list2 {
-    display: none;
     margin-left: 15px;
 }
 #profile2 {
-    width: 190px !important;
-    height:350px !important;
+    width: 260px !important;
+    height:300px !important;
 }
 #aside-right {
     float:right;
@@ -82,7 +63,7 @@ header {
 #content {
     margin-top: 20px;
     width: 1240px;
-    height: 1100px;
+    height: 800px;
     background: white;
     margin: 0 auto;
 }
@@ -98,7 +79,9 @@ header {
     margin: 0 auto;
 
 }
-
+.list_style li a{
+	text-decoration: none;
+}
 table {
     margin-left: auto;
     margin-right: auto;
@@ -117,17 +100,42 @@ table {
 #board_p span {
     position: absolute;
     margin-top:5px;
-    right: 290px;
+    right: 210px;
 }
 .board_h {
     height:500px;
 }
 .nav_toggle a {
-	text-decoration: none;
+	
 	color: #4d4d4d;
 	font-size: 17px;
 }
 .nav_toggle a:hover {
 	font-weight: 800;
 	color: #262626;
+}
+.p2_menu {
+	margin-left:15px;
+	font-size:17px;
+}
+td a {
+    	text-decoration: none;
+    	color: black;;
+}
+td a:hover {
+	text-decoration: underline;
+	font-weight: bold;
+}
+.m-l {
+	margin-left:6px;
+}
+.l_b {
+	width:257px;
+	border:1.5px solid black;
+	height:40px;
+}
+.bn:hover {
+	font-size: 17px;
+	font-weight:700;
+	color: #330000;
 }

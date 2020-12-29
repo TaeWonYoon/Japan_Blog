@@ -23,3 +23,12 @@
 .b_g {
 	background: #66ff66;
 }
+.d_pink {
+	font-weight: 600;
+	color:#66a3ff;
+	margin-bottom:3px;
+}
+.d_pink:hover {
+	font-size:19px;
+	color:#1a75ff;
+}

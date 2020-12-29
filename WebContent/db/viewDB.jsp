@@ -14,6 +14,7 @@ String commentUserId = "";
 String commentDateTime = "";
 String commentNickname = "";
 String postId = "";
+String img = "";
 
 int count = 0;
 int bno = Integer.parseInt(request.getParameter("board_bno"));
@@ -24,7 +25,7 @@ try {
 	ResultSet rs = null;
 	
 	// 닉네임을 가지고 오기 위한 JP_BOARD, JP_USER 조인
-	String sql = "SELECT B.BNO, B.TITLE, B.ID, B.DATE_TIME, B.CONTENT, B.VIEW_COUNT, U.NICKNAME "; 
+	String sql = "SELECT B.BNO, B.TITLE, B.ID, B.DATE_TIME, B.CONTENT, B.VIEW_COUNT, B.IMG, U.NICKNAME "; 
 	sql += "FROM JP_BOARD AS B ";
 	sql += "LEFT JOIN JP_USER AS U ON B.USER_ID = U.ID ";
 	sql += "WHERE B.BNO=? LIMIT 1;";
@@ -42,6 +43,7 @@ try {
 			count = rs.getInt("B.VIEW_COUNT");
 			bno = rs.getInt("B.BNO");
 			postId = rs.getString("B.ID");
+			img = rs.getString("B.IMG");
 		}
 	}
 	String sql2 = "UPDATE JP_BOARD SET VIEW_COUNT = ? WHERE BNO = ?";
