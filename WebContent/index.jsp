@@ -33,14 +33,14 @@
                       	  		<img src="./img/a.jpg" alt="" width="150" height="150" style="margin-left:45px;margin-bottom:10px;"/>
                       	  	<%}%>
                       	  </li>
-                      	  <%if(id != null) {%>
-	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">별명</a> : <span><%=nickName %></span></li>
-	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">등급</a> : <span><%=grade %></span></li>
-	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">아이디</a> : <span><%=id %></span></li>
-                      	  <%} else {%>
-	                      	  <li><a href="#" class="black under_none m-l" style="font-size:18px;">별명</a> : <span></span></li>
+                      	  <%if(id.equals("") || id == null) {%>
+                      	  	  <li><a href="#" class="black under_none m-l" style="font-size:18px;">별명</a> : <span></span></li>
 	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">등급</a> : <span></span></li>
 	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">아이디</a> : <span></span></li>
+                      	  <%} else {%>
+	                      	   <li><a href="#" class="black under_none m-l" style="font-size:18px;">별명</a> : <span><%=nickName %></span></li>
+	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">등급</a> : <span><%=grade %></span></li>
+	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">아이디</a> : <span><%=id %></span></li>
                       	  <%} %>
                       </ul>
                     </div>
