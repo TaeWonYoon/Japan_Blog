@@ -31,55 +31,55 @@
 			
 				<div class="card login-box">
 					<div class="card-header">
-						회원가입
+						 会員加入
 					</div>
 			  		<div class="card-body">
 			    		<form class="" id="registerForm" method="post" action="<c:url value='/' />register">
 				    		<div class="input-group">
     							<div class="input-group-prepend">
     								<div class="form-group">
-		    							<label>아이디(필수)</label>
+		    							<label>アイディ(必需)</label>
 			    						<div class="form-inline">
-				    						<input type="text" class="form-control mr-sm-2" name="id" placeholder="아이디" required maxlength="50">
-				    						<input type="button" class="btn btn-outline-primary mr-sm-2" value="중복확인" id="btnCheckValid">
+				    						<input type="text" class="form-control mr-sm-2" name="id" placeholder="アイディ" required maxlength="50">
+				    						<input type="button" class="btn btn-outline-primary mr-sm-2" value="重複確認" id="btnCheckValid">
 		    							</div>
 	   								</div>		
 	  							</div>
 	  						</div>	
 			    			<div class="form-group">
-    							<label>비밀번호(필수)</label>
-    							<input type="password" class="form-control" name="password" placeholder="비밀번호(최대20글자)" required maxlength="20">
+    							<label>パスワード(必需)</label>
+    							<input type="password" class="form-control" name="password" placeholder="パスワード(最大20文字)" required maxlength="20">
   							</div>
 			    			<div class="form-group">
-    							<label>이름(필수)</label>
-    							<input type="text" class="form-control" name="name" placeholder="이름" required maxlength="10">
+    							<label>名前(必需)</label>
+    							<input type="text" class="form-control" name="name" placeholder="名前" required maxlength="10">
   							</div>			    			
   							<div class="form-group">
-    							<label>이메일(선택)</label>
-    							<input type="email" class="form-control" name="email" placeholder="이메일" >
+    							<label>メール</label>
+    							<input type="email" class="form-control" name="email" placeholder="メール" >
   							</div>
   							<div class="form-group">
-    							<label>닉네임(필수)</label>
-    							<input type="text" class="form-control" name="nickname" placeholder="닉네임" required maxlength="4">
+    							<label>ニックネーム(必需)</label>
+    							<input type="text" class="form-control" name="nickname" placeholder="ニックネーム" required maxlength="4">
   							</div>
   							<div class="form-group">
-    							<label>전화번호(필수)</label>
+    							<label>電話番号(必需)</label>
     							<input type="text" class="form-control" name="phone" placeholder="010-XXXX-XXXX" maxlength="13" required oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/, '$1-$2-$3').replace('--', '-') ;">
   							</div>
   							<div class="form-group">
-    							<label>생년월일</label>
+    							<label>生年月日</label>
     							<div class="form-inline">    					
-	    							<select name="year" id="year" title="년도" class="custom-select"></select>
-									<select name="month" id="month" title="월" class="custom-select"></select>
-									<select name="day" id="day" title="일" class="custom-select"></select>
+	    							<select name="year" id="year" title="年度" class="custom-select"></select>
+									<select name="month" id="month" title="月" class="custom-select"></select>
+									<select name="day" id="day" title="日" class="custom-select"></select>
     							</div>
   							</div>
 			    		</form>
 			  		</div>
 			  		<div class="card-footer">
-			  			<button type="button" class="btn btn-primary" id="btnRegister">회원가입</button>
+			  			<button type="button" class="btn btn-primary" id="btnRegister">会員加入</button>
 			  			<div class="float-right">
-			  				<a href="<c:url value='/' />auth/login.jsp">로그인</a>
+			  				<a href="<c:url value='/' />auth/login.jsp">ログイン</a>
 			  			</div>
 			  		</div>
 				</div>
@@ -104,25 +104,25 @@
         var com_year = dt.getFullYear();
     
         // 발행 뿌려주기
-        $("#year").append("<option value=''>년도</option>");
+        $("#year").append("<option value=''>年</option>");
     
         // 올해 기준으로 -50년부터 +1년을 보여준다.
         for (var y = (com_year - 90); y <= (com_year-1); y++) {
-          $("#year").append("<option value='" + y + "'>" + y + " 년" + "</option>");
+          $("#year").append("<option value='" + y + "'>" + y + " 年" + "</option>");
         }
     
         // 월 뿌려주기(1월부터 12월)
         var month;
-        $("#month").append("<option value=''>월</option>");
+        $("#month").append("<option value=''>月</option>");
         for (var i = 1; i <= 12; i++) {
-          $("#month").append("<option value='" + i + "'>" + i + " 월" + "</option>");
+          $("#month").append("<option value='" + i + "'>" + i + " 月" + "</option>");
         }
     
         // 일 뿌려주기(1일부터 31일)
         var day;
-        $("#day").append("<option value=''>일</option>");
+        $("#day").append("<option value=''>日</option>");
         for (var i = 1; i <= 31; i++) {
-          $("#day").append("<option value='" + i + "'>" + i + " 일" + "</option>");
+          $("#day").append("<option value='" + i + "'>" + i + " 日" + "</option>");
         }
     
       }

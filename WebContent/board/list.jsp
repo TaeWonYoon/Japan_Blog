@@ -29,18 +29,13 @@ String boardHobby = request.getParameter("boardHobby");
 	<div class="list-box" style="height:800px;">
 		<div class="card">
 			<div class="card-header" >
-				<a href="<c:url value='/' />board/add.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary" >등록</a>
+				<a href="<c:url value='/' />board/add.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary" >登録</a>
 			</div><br>
 			<div class="card-body">
 				<table class="table table-hover" id="foo-table">
 					<thead class="thead-dark">
 						<tr>
-							<th>번호</th>
-							<th>취미</th>
-							<th>제목</th>
-							<th>글쓴이</th>
-							<th>작성일시</th>
-							<th>조회수</th>
+							<th>順位</th><th>趣味</th><th>題目</th><th>作成者</th><th>日付</th><th>照会数</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -75,11 +70,11 @@ try {
 						<tr>
 							<td><%=bno%></td>
 						<%if(hobby.equals("exercise")) {%>
-							<td>운동</td>
+							<td>運動</td>
 						<%} if(hobby.equals("taste")) {%>
-							<td>맛집</td>
+							<td>グルメ店</td>
 						<%} if(hobby.equals("suda")) {%>
-							<td>수다</td>
+							<td>おしゃべり</td>
 						<%} %>
 							<td><a href="<c:url value='/' />board/view.jsp?board_bno=<%=bno%>&boardHobby=<%=boardHobby%>"><%=title %></a></td>
 							<td><%=name%>(<%=userId %>)</td>

@@ -30,31 +30,31 @@
 				<input type="hidden" name="id" value="<%=id%>"/>
 				<input type="hidden" name="boardHobby" value="<%=boardHobby%>"/>
 	    			<div class="form-group">
-  						<label>분야</label>
+  						<label>分野</label>
   						<select name="hobby" id="hobby">
-  							<option value="">전체</option>
-  							<option value="exercise">운동</option>
-  							<option value="taste">맛집</option>
-  							<option value="suda">수다</option>
+  							<option value="">全体</option>
+  							<option value="exercise">運動</option>
+  							<option value="taste">グルメ店</option>
+  							<option value="suda">おしゃべり</option>
   						</select>
 					</div>
 	    			<div class="form-group">
-  						<label>제목</label>
+  						<label>タイトル</label>
   						<input type="text" class="form-control" name="title">
 					</div>
 					<div class="form-group">
-  						<label>내용</label>
+  						<label>内容</label>
   						<textarea class="form-control" rows="10" name="content"></textarea>
 					</div>
 					<div class="form-group">
-					<label>첨부파일: <input type="file" name="img" multiple="multiple" class=""></label>
+					<label>添付ファイル: <input type="file" name="img" multiple="multiple" class=""></label>
 	    			</div>
 	    		</form>
 			</div>
 			<div class="card-footer">
-				<a href="<c:url value='/' />board/list.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">목록</a>
+				<a href="<c:url value='/' />board/list.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">目録</a>
 				<div class="float-right">
-					<button type="button" class="btn btn-success" id="btnAdd">등록</button>
+					<button type="button" class="btn btn-success" id="btnAdd">登録</button>
 				</div>
 			</div>
 		</div>

@@ -25,13 +25,13 @@
 </style>
 </head>
 <body bgcolor="#ccf2ff">
-	<h3 align=center>욕설과 비방하는 글은 사용하지맙시다.</h3>
+	<h3 align=center>悪口と誹謗する文は使わないようにしましょう。</h3>
 	<br>
-	<div style="color:#666600; text-align:center;font-size:17px;font-weight:600;">
-		타인에게 피해가 가는 행동은 일절 <u>금지</u>!!<br>
-		서로 도움이 되는 글을 사용하시기 바랍니다.<br>
-		지속적으로 악행을 할 때는  경고1회 <br>
-		그래도 지속할 경우 <font color="red"><b>영구정지 대상이</b></font> 될 수 있습니다
+	<div style="color:black; text-align:center;font-size:17px;font-weight:600;">
+		他人に迷惑をかける行動は一切 <u>禁止</u>!!<br>
+		お互いに役に立つ文を書きましょう。<br>
+		継続的に悪行をした場合は警告1回<br>
+		それでも持続する場合 <font color="red"><b>永久停止の対象となる</b></font> 可能性があります。
 	</div><br><br><br><br>
 	<div style="text-align:center">
 		<button class="button" onclick="btn_close()">닫기</button>

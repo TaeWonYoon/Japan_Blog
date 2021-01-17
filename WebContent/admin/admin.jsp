@@ -32,11 +32,11 @@
                         </colgroup>
                         <thead class="table-primary">
                             <tr>
-                                <th>등급</th>
-                                <th>아아디</th>
-                                <th>이름</th>
-                                <th style="width:15px;">이메일</th>
-                                <th>수정</th>
+                                <th>等級</th>
+                                <th>アイディ</th>
+                                <th>名前</th>
+                                <th style="width:15px;">メール</th>
+                                <th>修整</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -65,28 +65,28 @@ try {
 								<select name="level" id="" style="width:80px;">
 					
                     <% if(userType == 4) {%>
-                    					<option value="1" size="4">새싹</option>
-                                        <option value="2">잎사귀</option>
-                                        <option value="3">열매</option>
-                                        <option value="4" selected>운영자</option>
+                    					<option value="1" size="4">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4" selected>4</option>
                                       <% } %>
                     <% if(userType == 3) {%>
-                    					<option value="1" size="4">새싹</option>
-                                        <option value="2">잎사귀</option>
-                                        <option value="3" selected>열매</option>
-                                        <option value="4" selected>운영자</option>
+                    					<option value="1" size="4">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4" selected>4</option>
                                       <% } %>
                     <% if(userType == 2) {%>
-                    					<option value="1" size="4">새싹</option>
-                                        <option value="2" selected>잎사귀</option>
-                                        <option value="3">열매</option>
-                                        <option value="4" >운영자</option>
+                    					<option value="1" size="4">1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3">3</option>
+                                        <option value="4" >4</option>
                                       <% } %>
                    <% if(userType == 1) {%>
-                    					<option value="1" size="4" selected>새싹</option>
-                                        <option value="2">잎사귀</option>
-                                        <option value="3">열매</option>
-                                        <option value="4" >운영자</option>
+                    					<option value="1" size="4" selected>1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4" >4</option>
                                       <% } %>
                                 </select>
 								
@@ -94,7 +94,7 @@ try {
 							<td><input name="userId" id="" value="<%=userId%>" style="border:none;"  readonly></td>
 							<td><input name="" id="" value="<%=name%>" style="border:none;"  readonly></td>
 							<td><input name="" id="" value="<%=email%>" style="border:none;"  readonly></td>
-							<td><button>수정</button></td>
+							<td><button>修整</button></td>
 							</form>
 							
 						</tr>
@@ -117,7 +117,6 @@ try {
             </div>			
         </div>
     </div>
-    <br><br>
     <%@ include file="/layout/footer.jsp" %>
     <script src="/js/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/t/bs-3.3.6/jqc-1.12.0,dt-1.10.11/datatables.min.js"></script>

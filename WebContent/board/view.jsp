@@ -41,11 +41,11 @@
 				<%} %>
 			</div>
 			<div class="card-footer">
-				<a href="<c:url value='/' />board/list.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">목록</a>
+				<a href="<c:url value='/' />board/list.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">List</a>
 				<% if(postId.equals(id)) { %>
 				<div class="float-right">
-					<a href="<c:url value='/' />board/edit.jsp?board_bno=<%=board_bno%>" class="btn btn-warning">수정</a>
-					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">삭제</button>
+					<a href="<c:url value='/' />board/edit.jsp?board_bno=<%=board_bno%>" class="btn btn-warning">修整</a>
+					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">削除</button>
 				</div>
 			<% } %>
 			</div>
@@ -58,11 +58,11 @@
 					<table class="table" style="margin-bottom:0;">
 						<thead>
 							<tr>
-								<th style="width:8%;">번호</th>
-								<th style="width:55%;">내용</th>
-								<th style="width:12%;">작성자</th>
-								<th style="width:16%;">작성일시</th>
-								<th style="width:15%;">삭제</th>
+								<th style="width:8%;">番号</th>
+								<th style="width:55%;">内容</th>
+								<th style="width:12%;">作成者</th>
+								<th style="width:16%;">作成日時</th>
+								<th style="width:15%;">削除</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -76,9 +76,9 @@
 			  <input type="hidden" name="postId" value="<%=postId%>">
 			  <input type="hidden" name="bno" value="<%=board_bno%>">
 				<div class="input-group mb-3">
-				  <input type="text" class="form-control" placeholder="댓글을 입력하세요." name="comment_content">
+				  <input type="text" class="form-control" placeholder="コメントを入力してください。" name="comment_content">
 				  <div class="input-group-append">
-				    <button class="btn btn-outline-primary" type="button" id="btnCommentAdd">등록</button>
+				    <button class="btn btn-outline-primary" type="button" id="btnCommentAdd">登録</button>
 				    <input type="hidden" id="cmt" value="<%=id%>" >
 				  </div>
 				</div>
@@ -92,23 +92,24 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title text-danger">게시글 삭제</h5>
+				<h5 class="modal-title text-danger">削除</h5>
 				<button type="button" class="close" data-dismiss="modal"
 					aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<p class="text-danger" >삭제된 내용은 복구가 불가능합니다. 정말삭제할까요?</p>
+				<p class="text-danger" >削除された内容は復旧できません。 本当に削除しましょうか？</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary"
-					data-dismiss="modal">취소</button>
-				<button type="button" class="btn btn-danger" id="btnDelete">삭제</button>				
+					data-dismiss="modal">キャンセル</button>
+				<button type="button" class="btn btn-danger" id="btnDelete">削除</button>				
 			</div>
 		</div>
 	</div>
 </div>
+
 </div>
 <form id="deleteForm" method="post" action="<c:url value='/' />board/delete">
 	<input type="hidden" name="bno" value="<%=bno%>">
@@ -119,7 +120,7 @@
 	<input type="hidden" name="bno_comment" value="<%=bno_comment%>">
 	<input type="hidden" name="boardHobby" value="<%=boardHobby%>">
 </form>
-
+<br><br><br><br>
 <%@ include file="/layout/script.jsp" %>
 <%@ include file="/layout/footer.jsp" %>
 		

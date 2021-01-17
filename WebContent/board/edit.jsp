@@ -28,15 +28,15 @@
 				<form name="editForm" method="post" action="<c:url value='/' />board/edit">
 					<input type="hidden" name="bno" value="<%=board_bno%>">
 	    			<div class="form-group">
-  							<label>닉네임</label>
+  							<label>ニックネーム</label>
   							<input type="text" class="form-control" value="<%=userId%>" disabled>
 					</div>
 	    			<div class="form-group">
-  							<label>제목</label>
+  							<label>題目</label>
   							<input type="text" class="form-control" name="title" value="<%=title%>">
 						</div>
 						<div class="form-group">
-  							<label>내용</label>
+  							<label>内容</label>
   							<textarea class="form-control" rows="10" name="content"><%=content %></textarea>
 						</div>
 	    		</form>
@@ -45,16 +45,16 @@
 				<%--
 				<a href="<c:url value='/' />board/view.jsp?id=<%=boardId %>" class="btn btn-primary">뒤로가기</a>
 				--%>
-				<a href="#" onclick="history.back();" class="btn btn-primary">뒤로가기</a>
+				<a href="#" onclick="history.back();" class="btn btn-primary">Back</a>
 				<div class="float-right">
-					<button type="button" class="btn btn-warning" id="btnEdit">수정</button>
+					<button type="button" class="btn btn-warning" id="btnEdit">修整</button>
 				</div>
 			</div>
 		</div>
 		
 	</div>
 </div>
-		
+		<br><Br><br><br><br><Br><br><br>
 <%@ include file="/layout/footer.jsp" %>
 		
 <%@ include file="/layout/script.jsp" %>

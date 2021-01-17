@@ -31,12 +31,7 @@ String boardbn = request.getParameter("boardbn");
 				<table class="table table-hover" id="foo-table">
 					<thead class="thead-dark">
 						<tr>
-							<th>번호</th>
-							<th>취미</th>
-							<th>제목</th>
-							<th>글쓴이</th>
-							<th>작성일시</th>
-							<th>조회수</th>
+							<th>順位</th><th>趣味</th><th>題目</th><th>作成者</th><th>日付</th><th>照会数</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -60,9 +55,9 @@ String boardbn = request.getParameter("boardbn");
 							%>
 							<%
 								String hobbys = "";
-								if(hobby.equals("exercise")) { hobbys = "운동"; } 
-								else if(hobby.equals("taste")) {hobbys = "맛집"; }
-								else { hobbys = "수다"; }
+								if(hobby.equals("exercise")) { hobbys = "運動"; } 
+								else if(hobby.equals("taste")) {hobbys = "グルメ店"; }
+								else { hobbys = "おしゃべり"; }
 							%>
                            		<tr>
                            			<td><%=i %></td>

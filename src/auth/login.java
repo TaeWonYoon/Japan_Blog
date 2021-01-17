@@ -114,15 +114,15 @@ public class login extends HttpServlet {
 			session.setAttribute("level", level);
 			String grade = "";
 			if(level == 1) {
-				grade = "새싹";
+				grade = "1";
 			} else if (level == 2) {
-				grade = "잎사귀";
+				grade = "2";
 			} else if (level == 3) {
-				grade = "열매";
+				grade = "3";
 			} else if (level == 4) {
-				grade = "운영자";
+				grade = "4";
 			} else {
-				grade = "관리자";
+				grade = "5";
 			}
 			session.setAttribute("grade", grade);
 			session.setAttribute("nickName", nickName);

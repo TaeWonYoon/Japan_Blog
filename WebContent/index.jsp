@@ -16,7 +16,7 @@
         <article id="section" class="b_g">
             <div id="aside">
                    <div id="profile" class="b_g">
-                   	  <span class="m-l" style="font-weight:bold;font-size:17px;margin-bottom:6px;">내정보</span>
+                   	  <span class="m-l" style="font-weight:bold;font-size:17px;margin-bottom:6px;">私の情報</span>
                       <ul class="list_style">
                       	  <li>
                       	  	<% if(level == 1) {%>
@@ -34,28 +34,28 @@
                       	  	<%}%>
                       	  </li>
                       	  <%if(id.equals("") || id == null) {%>
-                      	  	  <li><a href="#" class="black under_none m-l" style="font-size:18px;">별명</a> : <span></span></li>
-	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">등급</a> : <span></span></li>
-	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">아이디</a> : <span></span></li>
+                      	  	  <li><a href="#" class="black under_none m-l" style="font-size:18px;">別名</a> : <span></span></li>
+	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">等級</a> : <span></span></li>
+	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">アイディ</a> : <span></span></li>
                       	  <%} else {%>
-	                      	   <li><a href="#" class="black under_none m-l" style="font-size:18px;">별명</a> : <span><%=nickName %></span></li>
-	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">등급</a> : <span><%=grade %></span></li>
-	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">아이디</a> : <span><%=id %></span></li>
+	                      	   <li><a href="#" class="black under_none m-l" style="font-size:18px;">別名</a> : <span><%=nickName %></span></li>
+	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">等級</a> : <span><%=grade %></span></li>
+	                          <li><a href="#" class="black under_none m-l" style="font-size:18px;">アイディ</a> : <span><%=id %></span></li>
                       	  <%} %>
                       </ul>
                     </div>
                     <div id="profile2">
                         <ul class="list_style">
-                            <li class="l_b"><a href="###" class="blue under_none" style="font-weight:bold;">BLOG소개</a></li>
-                            <li class="l_b"><a href="###" id="n_b" class="blue under_none" target="_blank" style="font-weight:bold;">공지사항 꼭 <font color="red">읽어보시오!!</font></a></li>
-                            <li class="l_b"><a href="###" class="blue under_none" id="sports" style="font-weight:bold;">글 목록</a></li>
-	                        	<li class="p2_menu"><a href="/board/list.jsp?boardHobby=exercise" class="d_pink">→ 운동</a></li>
-	                            <li class="p2_menu"><a href="/board/list.jsp?boardHobby=taste" class="d_pink">→ 맛집</a></li>
-	                            <li class="p2_menu"><a href="/board/list.jsp?boardHobby=suda" class="d_pink">→ 수다</a></li>
+                            <li class="l_b"><a href="###" class="blue under_none" style="font-weight:bold;">BLOGの紹介</a></li>
+                            <li class="l_b"><a href="###" id="n_b" class="blue under_none" target="_blank" style="font-weight:bold;font-size:17px;">お知らせ事項 <font color="red">よんでください。!!</font></a></li>
+                            <li class="l_b"><a href="###" class="blue under_none" id="sports" style="font-weight:bold;">文の目録</a></li>
+	                        	<li class="p2_menu"><a href="/board/list.jsp?boardHobby=exercise" class="d_pink">→ 運動</a></li>
+	                            <li class="p2_menu"><a href="/board/list.jsp?boardHobby=taste" class="d_pink">→ グルメ店</a></li>
+	                            <li class="p2_menu"><a href="/board/list.jsp?boardHobby=suda" class="d_pink">→ おしゃべり</a></li>
 	                          
                         </ul>
                         <br><br>
-                        <h3 class="l_b" style="position: relative;bottom:-20px;">매너를 추구합니다!!!!!!</h3>
+                        <h3 class="l_b" style="position: relative;bottom:-20px;">マナーを守ってください。!!!!!!</h3>
                     </div>
             </div>
 
@@ -63,12 +63,12 @@
                 <div style="margin-top: 30px;"></div>
                 <div id="content">
                     <div id="board_p">
-                        <h3 style="text-align: center; margin-bottom: 10px;">인기 게시글</h3>
+                        <h3 style="text-align: center; margin-bottom: 10px;font-size:21px;">人気の文</h3>
                         <div>
                             <table border="1" style="text-align: center;">
                                 <colgroup>
                                     <col width="50px">
-                                    <col width="70px">
+                                    <col width="100px">
                                     <col width="300px">
                                     <col width="110px">
                                     <col width="200px">
@@ -76,7 +76,7 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th>순위</th><th>취미</th><th>제목</th><th>작성자</th><th>날짜</th><th>조회수</th>
+                                    <th>順位</th><th>趣味</th><th>題目</th><th>作成者</th><th>日付</th><th>照会数</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -84,16 +84,16 @@
                             <%@ include file="/db/index_best.jsp" %>
                                 </tbody>
                             </table>
-                            <span><a href="http://localhost:8080/board/list_bn.jsp?boardbn=best" class="black under_none bn">+더보기</a></span>
+                            <span><a href="http://localhost:8080/board/list_bn.jsp?boardbn=best" class="black under_none bn">+もっと見る</a></span>
                         </div>
                     </div>
                     <div id="board_p">
-                        <h3 style="text-align: center; margin-bottom: 10px;">최신게시물 게시글</h3>
+                        <h3 style="text-align: center; margin-bottom: 10px;font-size:21px;">最近の文</h3>
                         <div>
                             <table border="1" style="text-align: center;">
                                 <colgroup>
                                     <col width="50px">
-                                    <col width="70px">
+                                    <col width="100px">
                                     <col width="300px">
                                     <col width="110px">
                                     <col width="200px">
@@ -101,14 +101,14 @@
                                 </colgroup>
                                 <thead>
 	                                <tr>
-	                                    <th>순위</th><th>취미</th><th>제목</th><th>작성자</th><th>날짜</th><th>조회수</th>
+	                                    <th>順位</th><th>趣味</th><th>題目</th><th>作成者</th><th>日付</th><th>照会数</th>
 	                                </tr>
                                 </thead>
                                 <tbody>
                           			<%@ include file="/db/index_new.jsp" %>
                                 </tbody>
                             </table>
-                            <span><a href="http://localhost:8080/board/list_bn.jsp?boardbn=bnew" class="black under_none bn">+더보기</a></span>
+                            <span><a href="http://localhost:8080/board/list_bn.jsp?boardbn=bnew" class="black under_none bn">+もっと見る</a></span>
                         </div>
                     </div>
                 </div>
