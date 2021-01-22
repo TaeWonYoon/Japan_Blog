@@ -41,7 +41,7 @@
 				<%} %>
 			</div>
 			<div class="card-footer">
-				<a href="<c:url value='/' />board/list.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">List</a>
+				<a href="<c:url value='/' />board/list.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">目録</a>
 				<% if(postId.equals(id)) { %>
 				<div class="float-right">
 					<a href="<c:url value='/' />board/edit.jsp?board_bno=<%=board_bno%>" class="btn btn-warning">修整</a>

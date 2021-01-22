@@ -1,9 +1,10 @@
 @charset "UTF-8";
 .header_nav {
-    color: #a6a6a6;
+    color: #8c8c8c !important;
 }
 .header_nav:hover {
-    color: #808080;
+	font-weight: bold;
+    color: #404040 !important;
 }
 #logo {
     margin-top: 10px;

@@ -29,6 +29,15 @@
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/class.css">
+<style>
+	* {
+		background: #f2f2f2;
+	}
+	header {
+		margin-right: 40px;
+		
+	}
+</style>
 </head>
 <body>
 <%
@@ -54,7 +63,7 @@
 <%} %>
 <br>
 <div id="logo" style="margin-top:20px;">
-    <h1 id="Blog"><a href="/">ブログ</a></h1>
+    <h1 id="Blog"><a href="/">BLOG</a></h1>
 </div>
 <hr>
 </body>

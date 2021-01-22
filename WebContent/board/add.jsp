@@ -52,7 +52,7 @@
 	    		</form>
 			</div>
 			<div class="card-footer">
-				<a href="<c:url value='/' />board/list.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">目録</a>
+				<button id="btnL" class="btn btn-primary">目録</button>
 				<div class="float-right">
 					<button type="button" class="btn btn-success" id="btnAdd">登録</button>
 				</div>
@@ -65,7 +65,9 @@
 <%@ include file="/layout/footer.jsp" %>
 
 <script>
-
+	$('#btnL').on('click',function() {
+		history.back();
+	});
 	
 	$('#btnAdd').on('click', function() {
 		if($('#hobby').val() == "") {
