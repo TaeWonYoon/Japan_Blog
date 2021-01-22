@@ -80,7 +80,7 @@
         </div>
         <br><br>
         <div>
-            <h3>최근게시물</h1>
+            <h3>최근게시물</h3>
             <table class="table table-hover">
                 <thead>
                     <tr>

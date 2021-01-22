@@ -11,7 +11,7 @@
     color: aqua;
 }
 .under_none {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 .list_style {
     list-style: none;

@@ -74,6 +74,7 @@ header {
 }
 
 #footer-content {
+	background: aqua;
     padding-top: 50px;
     width: 650px;
     margin: 0 auto;
