@@ -13,9 +13,10 @@
     color: red;
 }
 #logo h1 a {
+	font-size: 60px;
     text-decoration: none;
-    color: #ff6666;
+    color: #000000;
 }
 #logo h1 a:hover {
-    color: #ff1a1a;
+    color: #b3b3b3;
 }

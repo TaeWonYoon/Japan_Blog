@@ -35,7 +35,7 @@ String boardHobby = request.getParameter("boardHobby");
 				<table class="table table-hover" id="foo-table">
 					<thead class="thead-dark">
 						<tr>
-							<th>順位</th><th>趣味</th><th>題目</th><th>作成者</th><th>日付</th><th>照会数</th>
+							<th>順位</th><th>カテゴリー</th><th>タイトル</th><th>作成者</th><th>日付</th><th>照会数</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -70,9 +70,9 @@ try {
 						<tr>
 							<td><%=bno%></td>
 						<%if(hobby.equals("exercise")) {%>
-							<td>運動</td>
+							<td>スポーツ</td>
 						<%} if(hobby.equals("taste")) {%>
-							<td>グルメ店</td>
+							<td>グルメ</td>
 						<%} if(hobby.equals("suda")) {%>
 							<td>おしゃべり</td>
 						<%} %>

@@ -19,8 +19,8 @@
 							%>
 							<%
 								String hobbys = "";
-								if(hobby.equals("exercise")) { hobbys = "運動"; } 
-								else if(hobby.equals("taste")) {hobbys = "グルメ店"; }
+								if(hobby.equals("exercise")) { hobbys = "スポーツ"; } 
+								else if(hobby.equals("taste")) {hobbys = "グルメ"; }
 								else { hobbys = "おしゃべり"; }
 							%>
                            		<tr>

@@ -31,14 +31,14 @@
 			
 				<div class="card login-box">
 					<div class="card-header">
-						 会員加入
+						 会員登録
 					</div>
 			  		<div class="card-body">
 			    		<form class="" id="registerForm" method="post" action="<c:url value='/' />register">
 				    		<div class="input-group">
     							<div class="input-group-prepend">
     								<div class="form-group">
-		    							<label>アイディ(必需)</label>
+		    							<label>USERID(必需)</label>
 			    						<div class="form-inline">
 				    						<input type="text" class="form-control mr-sm-2" name="id" placeholder="アイディ" required maxlength="50">
 				    						<input type="button" class="btn btn-outline-primary mr-sm-2" value="重複確認" id="btnCheckValid">
@@ -217,9 +217,9 @@
 			}).done(function(response) {
 				console.log(response.data);
 				if (response.data == 'valid') {
-					alert('아이디가 존재합니다');
+					alert('同じIDが存在します');
 				} else {
-					alert('사용가능한 아이디입니다');
+					alert('使用可能IDです');
 				}
 			});
 		});	

@@ -35,10 +35,10 @@
 			<div class="card-header"><%=title %></div>
 			<div class="card-body">
 				<div class="text-right"><p class="card-title">글쓴이 : <%=name %>(<%=postId%>)<br><%=dateTime %></p></div><hr/><br><br>
-				<p class="card-text"><%=content %></p>
 				<% if(img != null) { %>
-				<div class="text-center"><img src="../upload/<%=img %>" width="200" height="200" alt="이미지 없음"></div>
-				<%} %>
+				<div class="text-center"><img src="../upload/<%=img %>" width="300" height="300" alt="이미지 없음"></div>
+				<%} %><br>
+				<p class="card-text"><%=content %></p>
 			</div>
 			<div class="card-footer">
 				<a href="<c:url value='/' />board/list.jsp?boardHobby=<%=boardHobby%>" class="btn btn-primary">目録</a>
@@ -127,8 +127,8 @@
 <script>
 	
 	$('#c_delete').on('click', function() {
-		if(confirm('삭제하시겠습니까?')) {
-			alert('삭제했습니다');
+		if(confirm('コメントを消しますか')) {
+			alert('コメントを消しました');
 			$('#comment_delete').submit();
 		}
 		
@@ -141,12 +141,12 @@
 	$('#btnCommentAdd').on('click', function() {
 		
 		if (!$('input[name="comment_content"]').val()) {
-			alert('댓글 내용을 입력해주세요');
+			alert('コメントを入力してください');
 			$('input[name="comment_content"]').focus();
 			return false;
 		}
 		if($('#cmt').val() == null || $('#cmt').val() == "") {
-			alert('로그인후 사용가능');
+			alert('ログインしてから登録してください');
 			return false;
 		}
 		$('#comment_submit').submit();

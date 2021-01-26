@@ -8,7 +8,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>게시글 작성</title>
+	<title>ブログ作成</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="/css/bootstrap.min.css">	
 	
@@ -17,7 +17,7 @@
 <%@ include file="/layout/header.jsp" %>
 <% if(id == null || id.equals("")) {
 	out.println("<script>");
-	out.println("alert('로그인후 입력하세요')");
+	out.println("alert('ログインしてから登録してください。')");
 	out.println("history.back()");
 	out.println("</script>");
 }	%>
@@ -33,8 +33,8 @@
   						<label>分野</label>
   						<select name="hobby" id="hobby">
   							<option value="">全体</option>
-  							<option value="exercise">運動</option>
-  							<option value="taste">グルメ店</option>
+  							<option value="exercise">スポーツ</option>
+  							<option value="taste">グルメ</option>
   							<option value="suda">おしゃべり</option>
   						</select>
 					</div>

@@ -29,10 +29,10 @@
 <link rel="stylesheet" href="/css/index.css">
 <link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/class.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 <style>
-	* {
-		background: #f2f2f2;
-	}
+
 	header {
 		margin-right: 40px;
 		
@@ -45,11 +45,11 @@
 %>
 	<header>
     <span><a href="/auth/login.jsp" class="under_none header_nav">ログイン</a></span> <span class="header_nav"> | </span>
-    <span><a href="/auth/register.jsp" class="under_none header_nav">会員加入</a></span>
+    <span><a href="/auth/register.jsp" class="under_none header_nav">会員登録</a></span>
 	</header>
 <% } else { %>
 	<header>
-     <span class="header_nav"><%=id%>様 歓迎致します</span><span class="header_nav"> | </span>
+     <span class="header_nav"><%=id%>様</span><span class="header_nav"> | </span>
      <span><a href="/logout" class="under_none header_nav">ログアウト</a></span>
      
      <%if(level == 5) { %>
